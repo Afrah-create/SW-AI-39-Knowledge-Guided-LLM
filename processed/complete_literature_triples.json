@@ -1,0 +1,1232 @@
+[
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "sandy soils",
+        "predicate": "low",
+        "object": "moisture and nutrients",
+        "conditions": "inherent property of sandy soils",
+        "threshold": "less moisture and nutrients",
+        "evidence": "Sandy soils retain less moisture and nutrients",
+        "confidence": 0.9
+      },
+      {
+        "subject": "Fertile Soils",
+        "predicate": "indicated by",
+        "object": "Katabuteme, Sekoteka, Kafumbe, and Lusenke",
+        "conditions": "presence of specific weeds",
+        "threshold": "Presence",
+        "evidence": "Weeds such as Katabuteme, Sekoteka, Kafumbe, and Lusenke indicate fertile soils",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Poor Soils",
+        "predicate": "indicated by",
+        "object": "black jack, couch grass, Kakuuku, Eteete, and Muwugulaomunene",
+        "conditions": "presence of specific weeds",
+        "threshold": "Presence",
+        "evidence": "black jack, couch grass, Kakuuku, Eteete, and Muwugulaomunene grow on poor soils",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Good soils",
+        "predicate": "performs well",
+        "object": "banana",
+        "conditions": "suitable soil type",
+        "threshold": "good performance",
+        "evidence": "crops such as banana do well on good soils",
+        "confidence": 0.7
+      },
+      {
+        "subject": "Poor soils",
+        "predicate": "can grow",
+        "object": "mango",
+        "conditions": "tolerant crop type",
+        "threshold": "ability to grow",
+        "evidence": "mango can grow on poor soils",
+        "confidence": 0.7
+      }
+    ],
+    "management_practices": [
+      {
+        "practice_type": "amendment",
+        "crop": "unspecified",
+        "soil_condition": "sandy soils",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "increase moisture and nutrient retention",
+        "evidence": "Sandy soils retain less moisture and nutrients, and therefore, can be managed by providing water, organic matter, and fertilizers.",
+        "confidence": 0.7
+      }
+    ],
+    "climate_requirements": [],
+    "evidence": [],
+    "pdf_file": "38_WaSA_Ch4.6.pdf",
+    "text_length": 19074,
+    "processed_at": "2025-10-23T10:44:10.565548"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "maize",
+        "soil_condition": "NPK depletion",
+        "application_rate": "1 kg NPK/ha",
+        "timing": "unspecified",
+        "effect": "Insufficient to replenish mined nutrients",
+        "evidence": "NARO and FAO (1999) estimate that smallholderfarmers inUgandaapplyanaverage of1kgofNPK/ha."
+      },
+      {
+        "practice_type": "fertilization",
+        "crop": "unspecified",
+        "soil_condition": "nutrient depletion",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "Restoration of mined nutrients",
+        "evidence": "If inorganic fertilizer were used to restore the mined nutrients, it would cost an equivalent of a fifth of the farm income."
+      }
+    ],
+    "climate_requirements": [],
+    "pdf_file": "maize4.pdf",
+    "text_length": 85634,
+    "processed_at": "2025-10-23T10:44:21.212061"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "crops",
+        "soil_condition": "soil fertility",
+        "application_rate": "elevated levels of N, K, and P-containing fertilizers as well as other macro and micronutrients",
+        "timing": "throughout a growing season",
+        "effect": "increase crop yields, have prevented soil nutrient depletion, and, in some cases, have even built-up soil fertility",
+        "evidence": "To increase crop yields, elevated levels of nitrogen (N), potassium (K), and phosphorus(P)-containingfertilizersaswellasothermacroandmicronutrients have been applied in croplands since the end of World War II, have prevented soil nutrient depletion, and, in some cases, have even built-up soil fertility"
+      },
+      {
+        "practice_type": "fertilization",
+        "crop": "crops",
+        "soil_condition": "nutrient availability",
+        "application_rate": "balanced fertilization (both from inorganic and organic sources)",
+        "timing": "not specified",
+        "effect": "satisfactory crop growth and production while decreasing production costs",
+        "evidence": "Crop nutrition and balanced fertilization (both from inorganic and organic sources) are considered among the primary actions towards satisfactory crop growth and production while decreasing production costs."
+      }
+    ],
+    "climate_requirements": [],
+    "pdf_file": "nutrients1.pdf",
+    "text_length": 39916,
+    "processed_at": "2025-10-23T10:44:28.343564"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Umbrisol (Luyinjayinja)",
+        "predicate": "nutrient_limitation",
+        "object": "Common bean (Phaseolus vulgaris L.)",
+        "conditions": "Nutrient omission study",
+        "threshold": "N, P, K omitted",
+        "evidence": "Nitrogen, phosphorus and potassium were limiting nutrients for bean production in Umbrisol (Luyinjayinja)",
+        "confidence": 0.9
+      },
+      {
+        "subject": "Cambisol (\u2018Limyufumyufu)",
+        "predicate": "growth_limitation",
+        "object": "Common bean (Phaseolus vulgaris L.)",
+        "conditions": "Soil acidity",
+        "threshold": "High acidity",
+        "evidence": "in Cambisol (\u2018Limyufumyufu), common bean production was most limited by soil acidity.",
+        "confidence": 0.9
+      },
+      {
+        "subject": "Phaeozem",
+        "predicate": "greater_growth",
+        "object": "Common bean (Phaseolus vulgaris L.)",
+        "conditions": "Leaf number and growth",
+        "threshold": "Greater than Cambisol and Umbrisol",
+        "evidence": "the Phaeozem registering greater leaf number and growth",
+        "confidence": 0.8
+      }
+    ],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "lakevictoria.pdf",
+    "text_length": 27906,
+    "processed_at": "2025-10-23T10:44:35.389773"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "spacial.pdf",
+    "text_length": 28173,
+    "processed_at": "2025-10-23T10:44:39.504352"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [
+      {
+        "crop": "crops",
+        "rainfall_requirement": "variable",
+        "growing_season": "variable length",
+        "evidence": "However, rainfall is highly variable in most parts of the country both in terms of length of the rainy season and amount of rainfall (DWD, 1995).",
+        "temperature_range": null
+      }
+    ],
+    "pdf_file": "RAINFALL-RELIABILITY-FOR-CROP-PRODUCTION-A-CASE-STUDY-IN-UGANDA.pdf",
+    "text_length": 18366,
+    "processed_at": "2025-10-23T10:44:43.360579"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "1-s2.0-S2589721725000613-main.pdf",
+    "text_length": 87183,
+    "processed_at": "2025-10-23T10:44:51.574998"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "1-s2.0-S2352009420300341-main.pdf",
+    "text_length": 77934,
+    "processed_at": "2025-10-23T10:45:04.909858"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "Collective-stakeholder-representations-and-perceptions-_2018_Journal-of-Clea.pdf",
+    "text_length": 65102,
+    "processed_at": "2025-10-23T10:45:10.985317"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "Development-of-bis-thiobarbiturates-as-successful-urease-_2016_Chinese-Chemi.pdf",
+    "text_length": 21988,
+    "processed_at": "2025-10-23T10:45:16.006285"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "unspecified",
+        "soil_condition": "nutrient balance",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "potential eutrophication of aquifers due to excess Nitrogen application",
+        "evidence": "Level of fertilizer use is another factor revealed under this study, where 10% of the farmers where using fertilizer but the problem here was that most of the farmers do not know which fertilizer combinations to use, which poses a risk for application of excess fertilizers a case of Nitrogen where most of the farmers in Bududa and Mbale were applying NPK + Urea as a combination. This may lead to eutrophication of aquifers."
+      },
+      {
+        "practice_type": "manure application",
+        "crop": "unspecified",
+        "soil_condition": "soil health and nutrient content",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "negative environmental and soil/crop health impacts",
+        "evidence": "Another factor was utilization of animal droppings by farmers; where results revealed that most of the animal droppings are just applied directly in the field without transforming it into manure form or disposed-off as waste. This was majorly observed in Mbale district. This also has environmental implications and on soil and crop health."
+      },
+      {
+        "practice_type": "residue management",
+        "crop": "unspecified",
+        "soil_condition": "soil health and nutrient content",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "environmental degradation and soil health degradation",
+        "evidence": "Results also showed that land size significantly influenced nutrient management practices, a case of Namutumba where a larger land size led to production of a lot of biomass that attracted burning of residuals by farmers on-farm as their means of disposal. This eventually causes risks for environmental degradation and soil health."
+      }
+    ],
+    "climate_requirements": [],
+    "pdf_file": "nutrients2.pdf",
+    "text_length": 26965,
+    "processed_at": "2025-10-23T10:45:23.246600"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Liddugavu (black) soil",
+        "predicate": "is",
+        "object": "Phaeozem (WRB) and Udolls (USSoilTaxonomy)",
+        "conditions": "stable landscape location",
+        "threshold": null,
+        "evidence": "Liddugavu(black)soilcorrespondedtoPhaeozem(WRB)andUdolls(USSoilTaxonomy)andisconsistentlyviewedasthemostproductivesoilduetofasterweedgrowth,diversityofcropsitsupports anditsstablelandscapelocation.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Liddugavu (black) soil",
+        "predicate": "is viewed as",
+        "object": "most productive soil",
+        "conditions": null,
+        "threshold": null,
+        "evidence": "Liddugavu(black)soilcorrespondedtoPhaeozem(WRB)andUdolls(USSoilTaxonomy)andisconsistentlyviewedasthemostproductivesoilduetofasterweedgrowth,diversityofcropsitsupports anditsstablelandscapelocation.",
+        "confidence": 0.9
+      }
+    ],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "soil taxonomy.pdf",
+    "text_length": 56668,
+    "processed_at": "2025-10-23T10:45:31.835422"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "Encouraging-fertilizer-adoption-through-risk-free-sale_2020_World-Developmen.pdf",
+    "text_length": 55922,
+    "processed_at": "2025-10-23T10:45:40.660706"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Improved soil fertility",
+        "predicate": "increases",
+        "object": "Maize yields",
+        "conditions": "general",
+        "threshold": "over 50%",
+        "evidence": "Improved soil fertility can improve yields by over 50%",
+        "confidence": 0.8
+      }
+    ],
+    "management_practices": [
+      {
+        "practice_type": "mulching",
+        "crop": "Maize",
+        "soil_condition": "general",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "improves yields",
+        "evidence": "mulching and use of surface water management practices improve yields by single digit percentages"
+      },
+      {
+        "practice_type": "surface water management practices",
+        "crop": "Maize",
+        "soil_condition": "general",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "improves yields",
+        "evidence": "mulching and use of surface water management practices improve yields by single digit percentages"
+      },
+      {
+        "practice_type": "fertilizer application",
+        "crop": "Maize",
+        "soil_condition": "improved soil fertility",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "increased water stress in dry climates, increased yields need to go hand in hand with water management strategies",
+        "evidence": "The use of fertilizer application needs to go hand in hand with other water management strategies since more yields as a result of the improved soil fertility leads to increased water stress, especially for the dry climates."
+      }
+    ],
+    "climate_requirements": [
+      {
+        "crop": "Maize",
+        "temperature_range": "unspecified",
+        "rainfall_requirement": "unspecified",
+        "growing_season": "unspecified",
+        "evidence": "Maize, the most widely grown crop was used for the study."
+      }
+    ],
+    "pdf_file": "1-s2.0-S1474706515001060-main.pdf",
+    "text_length": 37672,
+    "processed_at": "2025-10-23T10:45:51.303139"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Soil acidity",
+        "predicate": "affects",
+        "object": "Food and fiber production",
+        "conditions": "High acidity levels",
+        "threshold": "At least 40% of arable land affected",
+        "evidence": "Soil acidity is one of the most prevalent problems in production of food and fiber because at least 40%, and by some estimates as much as 70%, of the world\u2019s arable land is affected.",
+        "confidence": 0.9
+      }
+    ],
+    "management_practices": [
+      {
+        "practice_type": "amendment",
+        "crop": "unspecified",
+        "soil_condition": "Soil acidity",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "Increase soil pH, ameliorate acidic soils",
+        "evidence": "Although liming can effectively increase soil pH and thus ameliorate acidic soils, the large amounts required and the absence of lime pits positioned close to the paddocks where lime is needed make soil liming an expensive option in many situations."
+      }
+    ],
+    "climate_requirements": [],
+    "pdf_file": "9780429223099_previewpdf.pdf",
+    "text_length": 316329,
+    "processed_at": "2025-10-23T10:46:10.726333"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Soil nitrogen supplying potential",
+        "predicate": "supports_yield_of",
+        "object": "lowland rice",
+        "conditions": "Eastern Uganda",
+        "threshold": "2.8 t ha-1",
+        "evidence": "The major limiting nutrient for lowland rice production is nitrogen and the soil nitrogen supplying potential can support yield target of 2.8 t ha-1.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Indigenous Phosphorus supply",
+        "predicate": "supports_yield_of",
+        "object": "lowland rice",
+        "conditions": "Eastern Uganda",
+        "threshold": "up to 9 t ha-1",
+        "evidence": "Whereas, the indigenous Phosphorus and Potassium supply can support yield target of up to 9 t ha-1 and therefore, not limiting at achievable yield targets of 6 tha-1.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Indigenous Potassium supply",
+        "predicate": "supports_yield_of",
+        "object": "lowland rice",
+        "conditions": "Eastern Uganda",
+        "threshold": "up to 9 t ha-1",
+        "evidence": "Whereas, the indigenous Phosphorus and Potassium supply can support yield target of up to 9 t ha-1 and therefore, not limiting at achievable yield targets of 6 tha-1.",
+        "confidence": 0.8
+      }
+    ],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "lowland rice",
+        "soil_condition": "Nitrogen deficiency",
+        "application_rate": "65 kg N ha-1",
+        "timing": "Unspecified",
+        "effect": "Target yield of 5 t ha-1",
+        "evidence": "65 kg N ha-1 is the optimum rate for lowland rice and this corresponds to a target yield of 5 t ha-1."
+      }
+    ],
+    "climate_requirements": [],
+    "pdf_file": "Ricepaper.pdf",
+    "text_length": 33722,
+    "processed_at": "2025-10-23T10:46:18.752827"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "Developing-a-more-engaging-safety-training-in-agriculture--Gen_2023_Safety-S.pdf",
+    "text_length": 54247,
+    "processed_at": "2025-10-23T10:46:25.267348"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "A-Monitoring-Digital-Twin-for-Services-of-Controlled-Envir_2022_IFAC-PapersO.pdf",
+    "text_length": 88522,
+    "processed_at": "2025-10-23T10:46:33.394269"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "evaporation.pdf",
+    "text_length": 77574,
+    "processed_at": "2025-10-23T10:46:43.495992"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "Upland rice",
+        "soil_condition": "N deficiency",
+        "application_rate": "100 kg ha-1",
+        "timing": "Not specified",
+        "effect": "Grain yield increased from 1.3 Mg ha-1 to 3.7 Mg ha-1",
+        "evidence": "Mean grain yield, with hulls, was 1.3 and 3.7 Mg ha-1 with 0 and 100 kg ha-1 N applied, respectively."
+      },
+      {
+        "practice_type": "fertilization",
+        "crop": "Upland rice",
+        "soil_condition": "P deficiency",
+        "application_rate": "17 to 30 kg ha-1",
+        "timing": "Not specified",
+        "effect": "increased grain yield but less than N application",
+        "evidence": "Grain yield response to applied P when compared with N was less"
+      },
+      {
+        "practice_type": "fertilization",
+        "crop": "Upland rice",
+        "soil_condition": "K deficiency",
+        "application_rate": "Not specified",
+        "timing": "Not specified",
+        "effect": "No increase in grain yield",
+        "evidence": "mean yield was not increased with K application"
+      }
+    ],
+    "climate_requirements": [],
+    "recommendations": [
+      {
+        "crop": "Upland rice",
+        "fertilizer": "N and P",
+        "economic_optimum": "54 to 92 kg ha-1 N and 17 to 30 kg ha-1 P",
+        "evidence": "Depending on fertilizer cost relative to grain price (CP), mean EOR ranged from 54 to 92 kg ha-1 N and 17 to 30 kg ha-1 P."
+      }
+    ],
+    "pdf_file": "African Journal of Plant Science - upland rice response to nutrient application in uganda.pdf",
+    "text_length": 36124,
+    "processed_at": "2025-10-23T10:46:52.175608"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "N, P, K, Ca, Mg concentrations in soil",
+        "predicate": "correlation",
+        "object": "FHIA17, M9, M2 banana varieties",
+        "conditions": "Nutrient use efficiency at harvesting time",
+        "threshold": "No major significant differences between cultivars",
+        "evidence": "The results showed no major significant nutrient use efficiencies between cultivars with FHIA 17 having the highest nutrient use efficiency. There were a few positive correlations between soil and plant nutrients.",
+        "confidence": 0.8
+      }
+    ],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "African Journal of Plant Science - physiological nutrient use efficiency of banana hybrids across agro ecological regions in uganda.pdf",
+    "text_length": 35565,
+    "processed_at": "2025-10-23T10:47:00.759724"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "Assessing the spatial variability of soils in Uganda.pdf",
+    "text_length": 181044,
+    "processed_at": "2025-10-23T10:47:20.151938"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "pH",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "across major growing regions",
+        "threshold": "Eastern region average: 5.78",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Total Nitrogen (N)",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "across major growing regions",
+        "threshold": "Eastern region average: 0.20%",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Potassium (K)",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "across major growing regions",
+        "threshold": "Eastern region average: 1.64 meq/100g",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Phosphorus (P)",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "across major growing regions",
+        "threshold": "Eastern region average: 107.68 mg/kg",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Organic Matter (OM)",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "across major growing regions",
+        "threshold": "Eastern region average: 3.31%",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Phosphorus and Potassium",
+        "predicate": "level",
+        "object": "Coffee (general)",
+        "conditions": "in most regions",
+        "threshold": "moderate to high",
+        "evidence": "This study showed that Phosphorus and Potassium were generally moderate to high levels in most of the regions sampled",
+        "confidence": 0.9
+      },
+      {
+        "subject": "Nitrogen and Organic Matter",
+        "predicate": "level",
+        "object": "Coffee (general)",
+        "conditions": "in most regions",
+        "threshold": "moderate to low",
+        "evidence": "This study showed that... Nitrogen and organic matter were moderate to low.",
+        "confidence": 0.9
+      }
+    ],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "Characterisation_and_Mapping_of_Soils_in.pdf",
+    "text_length": 37876,
+    "processed_at": "2025-10-23T10:47:34.774611"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "pH",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "Eastern region soil averages",
+        "threshold": "5.78",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Nitrogen",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "Eastern region soil averages",
+        "threshold": "0.20%",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Potassium",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "Eastern region soil averages",
+        "threshold": "1.64 meq/100 g",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Phosphorus",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "Eastern region soil averages",
+        "threshold": "107.68 mg/kg",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Organic Matter",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "Eastern region soil averages",
+        "threshold": "3.31%",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "CEC",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "Eastern region soil averages",
+        "threshold": "19.28 meq/100 g",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Base Saturation",
+        "predicate": "suitability",
+        "object": "Coffee (general)",
+        "conditions": "Eastern region soil averages",
+        "threshold": "43.40%",
+        "evidence": "the overall average soil macro-nutrients concentrations were significantly different across regions (p < 0.05) with Eastern having the highest levels of macro elements (CEC of 19.28 meq/100 g, Base Saturation (BS) of 43.40%, pH of 5.78, N of 0.20%, K of 1.64 meq/100 g, P of 107.68 mg/kg and OM of 3.31%) followed by Western region.",
+        "confidence": 0.8
+      }
+    ],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "Characterisation_and_Mapping_of_Soils_in (1).pdf",
+    "text_length": 37876,
+    "processed_at": "2025-10-23T10:47:50.214586"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "Characterization of Spatial Variability of Micro Nutrients in Soils  Classical Vs. Geo-Statistical Approach.pdf",
+    "text_length": 52017,
+    "processed_at": "2025-10-23T10:47:59.607276"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "Comparative-performance-assessment-of-pilot-irrigation-schemes-i_2024_Heliyo.pdf",
+    "text_length": 57925,
+    "processed_at": "2025-10-23T10:48:13.843112"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Sandy Soil",
+        "predicate": "yields best with",
+        "object": "Maize (Zea mays L.)",
+        "conditions": "Wet season (2017/18)",
+        "threshold": "3.5 t ha-1",
+        "evidence": "However, during the wet 2017/18 season, the combination of RT +mulching at planting +high fertilizer rate yielded the best (3.5 t ha-1).",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Sandy Soil",
+        "predicate": "yields best with",
+        "object": "Maize (Zea mays L.)",
+        "conditions": "Dry spells during 2015/16 and 2016/17",
+        "threshold": "2.6 and 2.8 t ha-1",
+        "evidence": "On the sandy soil, the combination of CT +mulching (at both stages) +high fertilizer rate achieved the highest maize grain yield of 2.6 and 2.8 t ha-1 during the 2015/16 and 2016/17, respectively.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Clayey Soil",
+        "predicate": "yields best with",
+        "object": "Maize (Zea mays L.)",
+        "conditions": "Regardless of season",
+        "threshold": "2.4, 2.9 and 3.4 t ha-1",
+        "evidence": "On clayey soil, CT +mulching (at both stages) +high fertilizer rate gave the highest yields of 2.4, 2.9 and 3.4 t ha-1 in 2015/16, 2016/17 and 2017/18, respectively.",
+        "confidence": 0.8
+      }
+    ],
+    "management_practices": [
+      {
+        "practice_type": "Tillage and Mulching",
+        "crop": "Maize (Zea mays L.)",
+        "soil_condition": "Soil Moisture",
+        "application_rate": "30% mulch cover",
+        "timing": "At planting or tasseling or at both stages",
+        "effect": "Reduced ASI by 4 days",
+        "evidence": "anthesis-silking interval (ASI) was shorter by 4 days following mulching at tasseling."
+      },
+      {
+        "practice_type": "Fertilization",
+        "crop": "Maize (Zea mays L.)",
+        "soil_condition": "Soil fertility",
+        "application_rate": "Low (35 kg N ha-1, 14 kg P ha-1 and 3 t ha-1 of manure) and high (90 kg N ha-1, 26 kg P ha-1 and 7 t ha-1 of manure)",
+        "timing": "Not specified",
+        "effect": "Increased yield, especially when combined with tillage and mulching",
+        "evidence": "Overall, the combination CT +mulching (at both stages) +high fertilizer rate increased maize yield by over 200 % and 300 % compared to the non-mulched treatments on sandy and clay soil, respectively, particularly during seasons with high incidences of intra-seasonal dry spells."
+      }
+    ],
+    "climate_requirements": [
+      {
+        "crop": "Maize (Zea mays L.)",
+        "temperature_range": "Not specified",
+        "rainfall_requirement": "Rainfed conditions, susceptible to dry spells",
+        "growing_season": "Southern Africa",
+        "evidence": "The high frequency of prolonged intra-season dry spells since the turn of the 21st century continues to heighten risk of crop failure in rainfed cropping systems of Southern Africa including Zimbabwe."
+      }
+    ],
+    "pdf_file": "Combinations-of-in-field-moisture-conservation-and-soil-fertil_2021_Field-Cr.pdf",
+    "text_length": 83221,
+    "processed_at": "2025-10-23T10:48:33.513033"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "information_source": "Ecological Economics journal article",
+    "pdf_file": "Crop-and-income-diversification-for-rural-adaptation--Ins_2022_Ecological-Ec.pdf",
+    "text_length": 100551,
+    "processed_at": "2025-10-23T10:48:50.729543"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Soil NPK values",
+        "predicate": "suitability",
+        "object": "crops (general)",
+        "conditions": "Optimal NPK levels for specific crops",
+        "threshold": "N/A",
+        "evidence": "The IoTSNA-CR model helps to minimise the use of fertilisers in soil so as to maximise productivity.",
+        "confidence": 0.7
+      }
+    ],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "crops (general)",
+        "soil_condition": "NPK deficiency",
+        "application_rate": "N/A",
+        "timing": "N/A",
+        "effect": "Improved crop yield",
+        "evidence": "The IoTSNA-CR model helps to minimise the use of fertilisers in soil so as to maximise productivity."
+      },
+      {
+        "practice_type": "Soil Testing",
+        "crop": "crops (general)",
+        "soil_condition": "NPK determination",
+        "application_rate": "Agrinex NPK soil testing tablets",
+        "timing": "before planting or during growing season",
+        "effect": "Estimation of P, N, and K values in soil",
+        "evidence": "The studies have revealed that the Agrinex NPK soil testing tablets should be applied to a soil sample, and then the soil colour can be sensed using an LDR colour sensor to predict the phosphorus (P), nitrogen (N), and potassium (K) values."
+      }
+    ],
+    "climate_requirements": [],
+    "pdf_file": "computers-12-00061-v2.pdf",
+    "text_length": 103340,
+    "processed_at": "2025-10-23T10:49:04.228381"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Soil Moisture Content",
+        "predicate": "suitability",
+        "object": "Coffee (Arabica and Robusta)",
+        "conditions": "High variability in highland areas during March to May",
+        "threshold": null,
+        "evidence": "Soil moisture content in Uganda was characterized by high variability in highland areas during the March to May season among years.",
+        "confidence": 0.8
+      }
+    ],
+    "management_practices": [],
+    "climate_requirements": [
+      {
+        "crop": "Coffee (Arabica and Robusta)",
+        "temperature_range": null,
+        "rainfall_requirement": null,
+        "growing_season": null,
+        "evidence": "Previous studies have looked at suitability of Arabica coffee with less emphasis on Robusta coffee. Secondly, they looked at coffee suitability in terms of temperature and rainfall."
+      }
+    ],
+    "pdf_file": "EASJALS_711_165-179_FTc.pdf",
+    "text_length": 54789,
+    "processed_at": "2025-10-23T10:49:11.308947"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "fertilizer recommendation.pdf",
+    "text_length": 212028,
+    "processed_at": "2025-10-23T10:49:45.376094"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "selected crops",
+        "soil_condition": "unspecified",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "general recommendations for selected crops",
+        "evidence": "TABLE 7: GENERAL RECOMMENDATIONS FOR SELECTED CROPS"
+      }
+    ],
+    "climate_requirements": [],
+    "pdf_file": "Fertilizer consumption and fertilizer use by crop in Uganda.pdf",
+    "text_length": 62496,
+    "processed_at": "2025-10-23T10:49:53.616768"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "soil",
+        "predicate": "suitability",
+        "object": "foxtail millet",
+        "conditions": "moderately fertile, well-drained",
+        "threshold": null,
+        "evidence": "Foxtail millet needs moderately fertile well drained soil for good yields",
+        "confidence": 0.8
+      },
+      {
+        "subject": "soil",
+        "predicate": "tolerance",
+        "object": "foxtail millet",
+        "conditions": "ranging from sandy to heavy clay soils",
+        "threshold": null,
+        "evidence": "although it can grow on soils ranging from sandy to heavy clay soils.",
+        "confidence": 0.7
+      },
+      {
+        "subject": "marginal lands",
+        "predicate": "suitability",
+        "object": "pearl millet",
+        "conditions": "facing untimely and irregular rainfall patterns and environmental stresses due to its natural inbuilt capacity to survive and withstand abiotic stresses such as drought, salinity, heat",
+        "threshold": null,
+        "evidence": "Pearl millet is mainly cultivated on marginal lands facing untimely and irregular rainfall patterns and environmental stresses due to its natural inbuilt capacity to survive and withstand abiotic stresses such as drought, salinity, heat.",
+        "confidence": 0.9
+      },
+      {
+        "subject": "drought",
+        "predicate": "tolerance",
+        "object": "pearl millet",
+        "conditions": null,
+        "threshold": null,
+        "evidence": "It is the most widely cultivated of all millets and is one of the most drought-tolerant of all domesticated cereals.",
+        "confidence": 0.95
+      },
+      {
+        "subject": "cooler, higher-altitude regions",
+        "predicate": "suitability",
+        "object": "finger millet",
+        "conditions": null,
+        "threshold": null,
+        "evidence": "Finger millet is widely produced in the cooler, higher-altitude regions of Africa and Asia",
+        "confidence": 0.8
+      },
+      {
+        "subject": "poor or marginal soils",
+        "predicate": "cultivation",
+        "object": "foxtail millet",
+        "conditions": "temperate, subtropical and tropical Asia",
+        "threshold": null,
+        "evidence": "providing food to millions of people dependant on poor or marginal soils in southern Europe and in temperate, subtropical and tropical Asia.",
+        "confidence": 0.75
+      }
+    ],
+    "management_practices": [],
+    "climate_requirements": [
+      {
+        "crop": "foxtail millet",
+        "temperature_range": null,
+        "rainfall_requirement": "500-700 mm",
+        "growing_season": null,
+        "evidence": "Grows better in place with annual rainfall of 500-700 mm."
+      }
+    ],
+    "pdf_file": "GAEZ_Crop_profile_pearl_and_foxtailmillet_20230309.pdf",
+    "text_length": 25101,
+    "processed_at": "2025-10-23T10:50:04.941917"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [
+      {
+        "crop": "Maize",
+        "temperature_range": "20-30\u00b0C (optimum), 35-40\u00b0C (heat stress)",
+        "rainfall_requirement": "500-2000 mm",
+        "growing_season": "90-180 days (temperate, subtropical and tropical lowland cultivars), 120-300 days (tropical highland types)",
+        "evidence": "Maize (temperate, subtropical and tropical lowland cultivars for grain and silage maize with growth cycles of 90 to 180 days, tropical highland types of 120 up to 300 days) is an annual crop belonging to the group of crops with a C4 photosynthesis pathway (C4 II), which is characterized with optimum photosynthesis and growth at temperatures between 20\u00b0C and 30\u00b0C. Temperatures above 30\u00b0C lead to lower photosynthesis and temperatures between 35\u00b0C and 40\u00b0C may cause heat stress and eventually plant damage, especially during the reproductive phase. Annual rainfall requirements for maize may vary from 500 mm up to 2,000 mm depending on cultivar and environment."
+      },
+      {
+        "crop": "Maize",
+        "temperature_range": "Minimum germination temperature 10\u00b0C, ideally above 15\u00b0C",
+        "rainfall_requirement": null,
+        "growing_season": null,
+        "evidence": "Minimum temperature for germination is 10\u00b0C and ideally above 15\u00b0C."
+      }
+    ],
+    "pdf_file": "GAEZ_Crop_profile_maize.pdf",
+    "text_length": 22222,
+    "processed_at": "2025-10-23T10:50:15.805341"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [
+      {
+        "practice_type": "Soil Water Conservation",
+        "crop": "Maize",
+        "soil_condition": "Soil moisture storage",
+        "application_rate": "Not specified",
+        "timing": "Throughout the cropping season",
+        "effect": "Increased soil moisture storage (1-12%) compared to control (bare soil)",
+        "evidence": "Results showed that CSA practices significantly increased (P < 0.05) total soil water storage (1\u201312%) than the control treatment."
+      }
+    ],
+    "climate_requirements": [],
+    "water_use_efficiency": [
+      {
+        "crop": "Maize",
+        "csa_practice": "Mulching (M)",
+        "water_use_efficiency_increase": "9-68%",
+        "evidence": "It was also noted that; the use of M, PPB, and HM increased the water use efficiency by 9\u201368% and 8\u201366% of grain yield compared to the control in the three growing seasons."
+      },
+      {
+        "crop": "Maize",
+        "csa_practice": "Permanent planting basins (PPB)",
+        "water_use_efficiency_increase": "9-68%",
+        "evidence": "It was also noted that; the use of M, PPB, and HM increased the water use efficiency by 9\u201368% and 8\u201366% of grain yield compared to the control in the three growing seasons."
+      },
+      {
+        "crop": "Maize",
+        "csa_practice": "Halfmoon pits (HM)",
+        "water_use_efficiency_increase": "9-68%",
+        "evidence": "It was also noted that; the use of M, PPB, and HM increased the water use efficiency by 9\u201368% and 8\u201366% of grain yield compared to the control in the three growing seasons."
+      }
+    ],
+    "pdf_file": "fsufs-06-889830.pdf",
+    "text_length": 53176,
+    "processed_at": "2025-10-23T10:50:25.472450"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "How-many-gigabytes-per-hectare-are-available-in-the-_2022_Computers-and-Elec.pdf",
+    "text_length": 51450,
+    "processed_at": "2025-10-23T10:50:38.666467"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [
+      {
+        "crop": "Wheat",
+        "temperature_range": "15-20\u00b0C (Optimum for C3 photosynthesis)",
+        "rainfall_requirement": "Rain-fed (generally)",
+        "growing_season": "100-130 days (Spring wheat), 180-250 days (Winter wheat)",
+        "evidence": "Wheat belongs to the C3 crop group (C3 I) which is characterized with optimum photosynthesis and growth at temperatures between 15\u2070C and 20\u2070C. Temperatures above 20\u2070C lead to lower photosynthesis, and temperatures above 30\u2070C cause growth cycle curtailment and severe heat stress, both leading to lower yields. The length of the total growing period of spring wheat ranges from 100 to 130 days while winter wheat needs about 180 to 250 days to mature."
+      },
+      {
+        "crop": "Winter Wheat",
+        "temperature_range": "Minimum 5\u00b0C for measurable growth",
+        "rainfall_requirement": "N/A",
+        "growing_season": "Requires a cold period (vernalization). Strong resistance to frost down to -20\u00b0C",
+        "evidence": "Winter wheat requires a cold period or chilling (vernalization) during early growth for normal heading under long days. Winter wheat in its early stages of development exhibits a strong resistance to frost, down to - 20\u00b0C. For winter and spring wheat minimum daily temperature for measurable growth is about 5\u00b0C."
+      },
+      {
+        "crop": "Spring Wheat",
+        "temperature_range": "Minimum 5\u00b0C for measurable growth",
+        "rainfall_requirement": "N/A",
+        "growing_season": "Day-neutral, sensitive to frost",
+        "evidence": "Spring wheat does not require chilling for heading and it is day-neutral. However, it is also sensitive to frost. For winter and spring wheat minimum daily temperature for measurable growth is about 5\u00b0C."
+      }
+    ],
+    "pdf_file": "GAEZ_Crop_profile_wheat.pdf",
+    "text_length": 22167,
+    "processed_at": "2025-10-23T10:50:48.463987"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Low soil fertility",
+        "predicate": "constrains",
+        "object": "Maize",
+        "conditions": "related mainly to continuous cropping without replenishment of depleted nutrients",
+        "threshold": null,
+        "evidence": "One of the major constraints to higher crop productivity among smallholder farmers in SSA is low soil fertility related mainly to continuouscroppingwithoutreplenishmentofdepletednutrients",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Soil nutrient mining",
+        "predicate": "limits",
+        "object": "Maize",
+        "conditions": "current production largely relies on soil nutrient mining, which cannot be sustained into the future",
+        "threshold": null,
+        "evidence": "current production largely relies on soil nutrient mining, which cannot be sustained into the future.",
+        "confidence": 0.7
+      }
+    ],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "maize3.pdf",
+    "text_length": 71147,
+    "processed_at": "2025-10-23T10:50:59.113548"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "soils",
+        "predicate": "driver of yield",
+        "object": "maize",
+        "conditions": "N/A",
+        "threshold": "N/A",
+        "evidence": "Maize yields are driven by precipitation and other variables like soils and socio-economic circumstances",
+        "confidence": 0.7
+      }
+    ],
+    "management_practices": [],
+    "climate_requirements": [
+      {
+        "crop": "maize",
+        "temperature_range": "N/A",
+        "rainfall_requirement": "N/A",
+        "growing_season": "N/A",
+        "evidence": "In Uganda, maize production is essentially rain-fed."
+      }
+    ],
+    "pdf_file": "maize2.pdf",
+    "text_length": 48806,
+    "processed_at": "2025-10-23T10:51:07.741107"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "soil fertility",
+        "predicate": "improves",
+        "object": "Maize yield",
+        "conditions": "Improved soil fertility",
+        "threshold": "50%",
+        "evidence": "Improved soil fertility can improve yields by over 50%",
+        "confidence": 0.8
+      }
+    ],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "Maize",
+        "soil_condition": "improved soil fertility",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "leads to increased water stress, especially for the dry climates",
+        "evidence": "The use of fertilizer application needs to go hand in hand with other water management strategies since more yields as a result of the improved soil fertility leads to increased water stress, especially for the dry climates."
+      },
+      {
+        "practice_type": "water management (mulching, surface water management)",
+        "crop": "Maize",
+        "soil_condition": "unspecified",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "improves yields",
+        "evidence": "Mulching and use of surface water management practices improve yields by single digit percentages."
+      }
+    ],
+    "climate_requirements": [
+      {
+        "crop": "Maize",
+        "temperature_range": "unspecified, temperatures have increased by up to 1\u00b0C since the 1970s",
+        "rainfall_requirement": "variable",
+        "growing_season": "unspecified",
+        "evidence": "Based on this study, it was found that temperatures have increased by up to 1 (cid:1)C across much of Uganda since the 1970s...Rainfall is variable and does not follow a specific significant increasing or decreasing trend."
+      }
+    ],
+    "pdf_file": "maize1.pdf",
+    "text_length": 37672,
+    "processed_at": "2025-10-23T10:51:17.610815"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [
+      {
+        "crop": "Common bean",
+        "temperature_range": null,
+        "rainfall_requirement": null,
+        "growing_season": null,
+        "evidence": "4.1 Common bean"
+      },
+      {
+        "crop": "Groundnut",
+        "temperature_range": null,
+        "rainfall_requirement": null,
+        "growing_season": null,
+        "evidence": "4.2 Groundnut"
+      },
+      {
+        "crop": "Cowpea",
+        "temperature_range": null,
+        "rainfall_requirement": null,
+        "growing_season": null,
+        "evidence": "4.3 Cowpea"
+      },
+      {
+        "crop": "Soybean",
+        "temperature_range": null,
+        "rainfall_requirement": null,
+        "growing_season": null,
+        "evidence": "4.4 Soybean"
+      }
+    ],
+    "pdf_file": "legumes-ug.pdf",
+    "text_length": 67798,
+    "processed_at": "2025-10-23T10:51:31.018155"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "unspecified",
+        "soil_condition": "nutrient_depletion",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "replace depleted nutrients",
+        "evidence": "The value of replacing the depleted nutrients using the cheapest inorganic fertilizers is equivalent to about 20 percent of household income obtained from agricultural production."
+      },
+      {
+        "practice_type": "soil_conservation",
+        "crop": "unspecified",
+        "soil_condition": "degraded_land",
+        "application_rate": "unspecified",
+        "timing": "unspecified",
+        "effect": "increase agricultural productivity and income and conserve natural resources.",
+        "evidence": "Land investments increase agricultural productivity and income and conserve natural resources."
+      }
+    ],
+    "climate_requirements": [],
+    "pdf_file": "Policy_Options_for_Increasing_Crop_Produ.pdf",
+    "text_length": 198590,
+    "processed_at": "2025-10-23T10:51:51.457496"
+  },
+  {
+    "error": "429 POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?%24alt=json%3Benum-encoding%3Dint: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 50\nPlease retry in 51.896461058s.",
+    "pdf_name": "mubiru-et-al-2012-characterising-agrometeorological-climate-risks-and-uncertainties-crop-production-in-uganda-research.pdf",
+    "timestamp": "2025-10-23T10:52:08.337982",
+    "pdf_file": "mubiru-et-al-2012-characterising-agrometeorological-climate-risks-and-uncertainties-crop-production-in-uganda-research.pdf",
+    "text_length": 43884,
+    "processed_at": "2025-10-23T10:52:08.338005"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [
+      {
+        "crop": "crops (unspecified)",
+        "temperature_range": "increased by 1.3\u25e6Celsius since 1960 (mean annual temperature)",
+        "rainfall_requirement": "decreasing annual and summer rainfall",
+        "growing_season": "N/A",
+        "evidence": "The climate is changing across Uganda with mean annual temperature increasing by 1.3\u25e6Celsius since 1960 and decreasing annual and summer rainfall (McSweeney et al., 2010; Williams et al., 2012). Expected further increases in temperature and in the frequency of extreme rainfall events will affect crop production and increase the risk of food insecurity and poverty (McSweeney et al., 2010; Ongoma et al., 2018)."
+      }
+    ],
+    "pdf_file": "Production-variability-and-adaptation-strategies-of-Ugandan-_2023_Climate-Ri.pdf",
+    "text_length": 67774,
+    "processed_at": "2025-10-23T10:52:17.140735"
+  },
+  {
+    "error": "429 POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?%24alt=json%3Benum-encoding%3Dint: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 50\nPlease retry in 34.485176223s.",
+    "pdf_name": "Predicting-soil-types-and-soil-properties-with-limited-data-_2019_Geoderma-R.pdf",
+    "timestamp": "2025-10-23T10:52:25.697982",
+    "pdf_file": "Predicting-soil-types-and-soil-properties-with-limited-data-_2019_Geoderma-R.pdf",
+    "text_length": 63214,
+    "processed_at": "2025-10-23T10:52:25.698008"
+  },
+  {
+    "error": "429 POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?%24alt=json%3Benum-encoding%3Dint: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 50\nPlease retry in 25.224108476s.",
+    "pdf_name": "The-effect-of-using-indigenous-and-scientific-forecasts-on-_2026_Environment.pdf",
+    "timestamp": "2025-10-23T10:52:34.963043",
+    "pdf_file": "The-effect-of-using-indigenous-and-scientific-forecasts-on-_2026_Environment.pdf",
+    "text_length": 70604,
+    "processed_at": "2025-10-23T10:52:34.963065"
+  },
+  {
+    "error": "429 POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?%24alt=json%3Benum-encoding%3Dint: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 50\nPlease retry in 13.787226744s.",
+    "pdf_name": "Ten-years-of-corn-yield-dynamics-at-field-scale-unde_2021_Computers-and-Elec.pdf",
+    "timestamp": "2025-10-23T10:52:46.385049",
+    "pdf_file": "Ten-years-of-corn-yield-dynamics-at-field-scale-unde_2021_Computers-and-Elec.pdf",
+    "text_length": 70253,
+    "processed_at": "2025-10-23T10:52:46.385066"
+  },
+  {
+    "error": "429 POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?%24alt=json%3Benum-encoding%3Dint: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 50\nPlease retry in 59.022315047s.",
+    "pdf_name": "sustainability-11-01588.pdf",
+    "timestamp": "2025-10-23T10:53:01.169300",
+    "pdf_file": "sustainability-11-01588.pdf",
+    "text_length": 67934,
+    "processed_at": "2025-10-23T10:53:01.169318"
+  },
+  {
+    "error": "429 POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?%24alt=json%3Benum-encoding%3Dint: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 50\nPlease retry in 52.976306899s.",
+    "pdf_name": "Wycliffe_Tumwesigye_Doreen_Atwongyire_Pe.pdf",
+    "timestamp": "2025-10-23T10:53:07.195935",
+    "pdf_file": "Wycliffe_Tumwesigye_Doreen_Atwongyire_Pe.pdf",
+    "text_length": 32261,
+    "processed_at": "2025-10-23T10:53:07.195955"
+  },
+  {
+    "error": "429 POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?%24alt=json%3Benum-encoding%3Dint: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 50\nPlease retry in 21.115413812s.",
+    "pdf_name": "ubos2008-9.pdf",
+    "timestamp": "2025-10-23T10:53:39.045156",
+    "pdf_file": "ubos2008-9.pdf",
+    "text_length": 431322,
+    "processed_at": "2025-10-23T10:53:39.045176"
+  }
+]

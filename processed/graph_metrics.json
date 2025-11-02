@@ -1,0 +1,141 @@
+{
+  "basic_metrics": {
+    "num_nodes": 26991,
+    "num_edges": 175318,
+    "density": 0.00024066040758526002,
+    "is_connected": false,
+    "num_components": 12
+  },
+  "node_types": {
+    "crop": 56,
+    "other": 26870,
+    "agro_ecological_zone": 12,
+    "soil_property": 40,
+    "management_practice": 12,
+    "climate_zone": 1
+  },
+  "edge_types": {
+    "has_nitrogen_requirement": 11682,
+    "has_phosphorus_requirement": 11682,
+    "has_potassium_requirement": 11682,
+    "grows_in_agro_ecological_zone": 11682,
+    "requires_ph": 11682,
+    "requires_organic_matter": 11682,
+    "prefers_texture_class": 11682,
+    "has_suitability_score": 11682,
+    "has_yield_potential": 11682,
+    "has_soil_quality_index": 11682,
+    "has_climate_suitability": 11682,
+    "has_overall_suitability": 11682,
+    "has_data_completeness": 11682,
+    "has_area_coverage": 11682,
+    "has_total_suitable_area": 11682,
+    "requires_climate": 17,
+    "low": 1,
+    "indicated by": 2,
+    "can grow": 1,
+    "performs well": 1,
+    "recommended_for": 26,
+    "nutrient_limitation": 1,
+    "growth_limitation": 1,
+    "greater_growth": 1,
+    "is": 1,
+    "is viewed as": 1,
+    "increases": 1,
+    "affects": 1,
+    "supports_yield_of": 3,
+    "correlation": 1,
+    "suitability": 17,
+    "level": 2,
+    "yields best with": 3,
+    "tolerance": 2,
+    "cultivation": 1,
+    "constrains": 1,
+    "limits": 1,
+    "driver of yield": 1,
+    "improves": 1
+  },
+  "top_nodes_by_degree": [
+    [
+      "http://example.org/agrokg/crop/sunflower",
+      0.24175620600222306
+    ],
+    [
+      "http://example.org/agrokg/nitrogen_level/50.0_kg_per_ha",
+      0.3020007410151908
+    ],
+    [
+      "http://example.org/agrokg/phosphorus_level/15.0_kg_per_ha",
+      0.30281585772508335
+    ],
+    [
+      "http://example.org/agrokg/potassium_level/100.0_kg_per_ha",
+      0.3020377917747314
+    ],
+    [
+      "http://example.org/agrokg/agro_ecological_zone/aez_1",
+      0.02786217117450908
+    ],
+    [
+      "http://example.org/agrokg/ph_level/ph_6.5",
+      0.33382734346054094
+    ],
+    [
+      "http://example.org/agrokg/organic_matter_level/organic_matter_2.0",
+      0.33382734346054094
+    ],
+    [
+      "http://example.org/agrokg/texture_class/unknown",
+      0.43282697295294553
+    ],
+    [
+      "http://example.org/agrokg/suitability_score/score_0.8980799551287297",
+      3.705075954057058e-05
+    ],
+    [
+      "http://example.org/agrokg/yield_score/yield_2.027862595419847",
+      3.705075954057058e-05
+    ],
+    [
+      "http://example.org/agrokg/soil_quality_index/quality_0.85",
+      0.3291218969988885
+    ],
+    [
+      "http://example.org/agrokg/climate_suitability/climate_0.4",
+      0.37673212300852166
+    ],
+    [
+      "http://example.org/agrokg/overall_suitability/overall_1.177590760677446",
+      3.705075954057058e-05
+    ],
+    [
+      "http://example.org/agrokg/data_completeness/completeness_1.0",
+      0.43282697295294553
+    ],
+    [
+      "http://example.org/agrokg/area_coverage/area_745.243",
+      0.001333827343460541
+    ],
+    [
+      "http://example.org/agrokg/total_suitable_area/total_689.799",
+      3.705075954057058e-05
+    ],
+    [
+      "http://example.org/agrokg/agro_ecological_zone/aez_2",
+      0.03130789181178214
+    ],
+    [
+      "http://example.org/agrokg/suitability_score/score_0.8906171558647192",
+      3.705075954057058e-05
+    ],
+    [
+      "http://example.org/agrokg/yield_score/yield_1.9768097643097648",
+      3.705075954057058e-05
+    ],
+    [
+      "http://example.org/agrokg/overall_suitability/overall_1.159289791638817",
+      3.705075954057058e-05
+    ]
+  ],
+  "created_at": "2025-10-23T11:36:10.685481"
+}

@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Flask
+instance/
+.webassets-cache
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Model files - Now using Git LFS for large files
+# models/*.pth
+# models/*.ckpt
+# quick_fine_tuned_fast/
+
+# Data files (large datasets)
+*.csv
+data/
+
+# Keep essential JSON files, but exclude large data JSONs
+data/*.json
+processed/*.csv
+
+# Temporary files
+*.tmp
+*.temp
+

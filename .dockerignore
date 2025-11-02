@@ -1,0 +1,72 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.env
+.git
+*.log
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Exclude all markdown documentation
+*.md
+DEPLOYMENT_OPTIONS.md
+DEPLOYMENT_SIZE.md
+MODEL_DEPLOYMENT_STRATEGIES.md
+LOCAL_RUN_INSTRUCTIONS.md
+QUICK_START.md
+UPDATE_MODELS.md
+RESTART_INSTRUCTIONS.md
+README.md
+ARCHITECTURE.md
+CLOUD_DEPLOYMENT_GUIDE.md
+
+# Exclude large data files but keep essential ones
+data/dataset_triples.json
+data/unified_knowledge_graph.json
+# Keep processed files that are needed - don't exclude them
+# processed/unified_knowledge_graph.json - DON'T EXCLUDE - NEEDED
+# processed/trained_models/ - DON'T EXCLUDE - NEEDED
+processed/*.csv
+processed/complete_*.json
+processed/literature_analysis.json
+processed/dataset_*.json
+processed/data_cleaning_report.json
+processed/graph_metrics.json
+processed/graph_embedding_results.json
+processed/optimized_graph_embedding_results.json
+processed/unified_knowledge_graph_analysis.json
+processed/unified_knowledge_graph_schema.json
+processed/trained_models/complete_literature_triples.json
+processed/trained_models/dataset_summary.json
+
+# Exclude other model files (keep best_model and model_metadata)
+models/complex_model.pth
+models/distmult_model.pth
+models/graphsage_model.pth
+models/transe_model.pth
+models/gcn_model.pth
+
+# Keep essential quick_fine_tuned_fast files, only exclude checkpoints
+quick_fine_tuned_fast/checkpoint-*/
+quick_fine_tuned_fast/logs/
+
+# Exclude other directories
+images/*
+.railway/
+
+# Exclude deployment scripts not needed in container
+DEPLOY.bat
+download_models.py
+
+# Keep only essential app code
+!.gitignore
+

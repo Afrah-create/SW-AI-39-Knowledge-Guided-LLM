@@ -1,0 +1,215 @@
+[
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Sandy soils",
+        "predicate": "suitability",
+        "object": "crops",
+        "conditions": "low moisture and nutrient retention",
+        "threshold": null,
+        "evidence": "Sandy soils retain less moisture and nutrients, and therefore, can be managed by providing water, organic matter, and fertilizers.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "Good soils",
+        "predicate": "suitability",
+        "object": "Banana",
+        "conditions": "General soil fertility",
+        "threshold": null,
+        "evidence": "Similarly, crops such as banana do well on good soils",
+        "confidence": 0.9
+      },
+      {
+        "subject": "Poor soils",
+        "predicate": "suitability",
+        "object": "Mango",
+        "conditions": "General soil fertility",
+        "threshold": null,
+        "evidence": "while mango can grow on poor soils",
+        "confidence": 0.9
+      }
+    ],
+    "management_practices": [
+      {
+        "practice_type": "amendment",
+        "crop": "crops",
+        "soil_condition": "sandy soils",
+        "application_rate": null,
+        "timing": null,
+        "effect": "increase moisture and nutrient retention",
+        "evidence": "Sandy soils retain less moisture and nutrients, and therefore, can be managed by providing water, organic matter, and fertilizers."
+      }
+    ],
+    "climate_requirements": [],
+    "pdf_file": "38_WaSA_Ch4.6.pdf",
+    "text_length": 19074,
+    "processed_at": "2025-10-23T10:38:53.336298"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Soil nutrients (N, P, K)",
+        "predicate": "depletion",
+        "object": "Maize",
+        "conditions": "Low external input agriculture",
+        "threshold": "70 kg/ha/year",
+        "evidence": "Soil fertility mining in Uganda is among the highest in Sub-Saharan Africa (SSA), with an estimated average annual nutrient depletion of 70 kg of nitrogen (N), phosphorus (P) and potassium (K) (Stoorvogel and Smaling, 1990; Wortmann and Kaizzi, 1998).",
+        "confidence": 0.9
+      }
+    ],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "Various crops",
+        "soil_condition": "Low NPK",
+        "application_rate": "Average of 1 kg NPK/ha",
+        "timing": "Unspecified",
+        "effect": "Insufficient to replenish mined nutrients",
+        "evidence": "NARO and FAO (1999) estimate that smallholder farmers in Uganda apply an average of 1 kg of NPK/ha."
+      },
+      {
+        "practice_type": "fertilization",
+        "crop": "Various crops",
+        "soil_condition": "Soil nutrient depletion",
+        "application_rate": "Unspecified",
+        "timing": "Unspecified",
+        "effect": "Restore mined nutrients",
+        "evidence": "If inorganic fertilizer were used to restore the mined nutrients, it would cost an equivalent of a fifth of the farm income."
+      }
+    ],
+    "climate_requirements": [],
+    "pdf_file": "maize4.pdf",
+    "text_length": 85634,
+    "processed_at": "2025-10-23T10:39:01.234576"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "soil pH",
+        "predicate": "affects",
+        "object": "crop production",
+        "conditions": "general",
+        "threshold": "optimal range needed",
+        "evidence": "However, crop production depends on several interrelated agronomic factors, such as soil (e.g., pH, texture, organic matter content, water holding capacity, mineral composition, and nutrient availability, etc.), plant genetic material, crop management, and several other biotic and abiotic factors.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "soil texture",
+        "predicate": "affects",
+        "object": "crop production",
+        "conditions": "general",
+        "threshold": "optimal range needed",
+        "evidence": "However, crop production depends on several interrelated agronomic factors, such as soil (e.g., pH, texture, organic matter content, water holding capacity, mineral composition, and nutrient availability, etc.), plant genetic material, crop management, and several other biotic and abiotic factors.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "soil organic matter content",
+        "predicate": "affects",
+        "object": "crop production",
+        "conditions": "general",
+        "threshold": "optimal range needed",
+        "evidence": "However, crop production depends on several interrelated agronomic factors, such as soil (e.g., pH, texture, organic matter content, water holding capacity, mineral composition, and nutrient availability, etc.), plant genetic material, crop management, and several other biotic and abiotic factors.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "soil water holding capacity",
+        "predicate": "affects",
+        "object": "crop production",
+        "conditions": "general",
+        "threshold": "optimal range needed",
+        "evidence": "However, crop production depends on several interrelated agronomic factors, such as soil (e.g., pH, texture, organic matter content, water holding capacity, mineral composition, and nutrient availability, etc.), plant genetic material, crop management, and several other biotic and abiotic factors.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "soil mineral composition",
+        "predicate": "affects",
+        "object": "crop production",
+        "conditions": "general",
+        "threshold": "optimal range needed",
+        "evidence": "However, crop production depends on several interrelated agronomic factors, such as soil (e.g., pH, texture, organic matter content, water holding capacity, mineral composition, and nutrient availability, etc.), plant genetic material, crop management, and several other biotic and abiotic factors.",
+        "confidence": 0.8
+      },
+      {
+        "subject": "soil nutrient availability",
+        "predicate": "affects",
+        "object": "crop production",
+        "conditions": "general",
+        "threshold": "optimal range needed",
+        "evidence": "However, crop production depends on several interrelated agronomic factors, such as soil (e.g., pH, texture, organic matter content, water holding capacity, mineral composition, and nutrient availability, etc.), plant genetic material, crop management, and several other biotic and abiotic factors.",
+        "confidence": 0.8
+      }
+    ],
+    "management_practices": [
+      {
+        "practice_type": "fertilization",
+        "crop": "crops",
+        "soil_condition": "nutrient levels",
+        "application_rate": "optimal",
+        "timing": "throughout growing season",
+        "effect": "satisfactory crop growth and production",
+        "evidence": "Crop nutrition and balanced fertilization (both from inorganic and organic sources) are considered among the primary actions towards satisfactory crop growth and production while decreasing production costs."
+      },
+      {
+        "practice_type": "fertilization",
+        "crop": "crops",
+        "soil_condition": "soil fertility",
+        "application_rate": "elevated levels",
+        "timing": "since the end of World War II",
+        "effect": "prevented soil nutrient depletion and built-up soil fertility",
+        "evidence": "To increase crop yields, elevated levels of nitrogen (N), potassium (K), and phosphorus(P)-containing fertilizers as well as other macro and micronutrients have been applied in croplands since the end of World War II, have prevented soil nutrient depletion, and, in some cases, have even built-up soil fertility (maintenance fertility) [8]."
+      }
+    ],
+    "climate_requirements": [],
+    "extracted_metadata": {
+      "file_path": "path/to/your/file",
+      "extraction_date": "2024-02-29"
+    },
+    "pdf_file": "nutrients1.pdf",
+    "text_length": 39916,
+    "processed_at": "2025-10-23T10:39:10.178029"
+  },
+  {
+    "soil_crop_relationships": [
+      {
+        "subject": "Umbrisol (Luyinjayinja)",
+        "predicate": "limiting_nutrient",
+        "object": "Common bean (Phaseolus vulgaris L.)",
+        "conditions": "Nutrient omission study",
+        "threshold": "N, P, K omission",
+        "evidence": "Nitrogen, phosphorus and potassium were limiting nutrients for bean production in Umbrisol (Luyinjayinja)",
+        "confidence": 0.9
+      },
+      {
+        "subject": "Cambisol (\u2018Limyufumyufu)",
+        "predicate": "limiting_factor",
+        "object": "Common bean (Phaseolus vulgaris L.)",
+        "conditions": "Nutrient omission study",
+        "threshold": "Soil acidity",
+        "evidence": "in Cambisol (\u2018Limyufumyufu), common bean production was most limited by soil acidity.",
+        "confidence": 0.9
+      },
+      {
+        "subject": "Phaeozem (Liddugavu)",
+        "predicate": "better_growth",
+        "object": "Common bean (Phaseolus vulgaris L.)",
+        "conditions": "Compared to Cambisol and Umbrisol",
+        "threshold": "Greater leaf number and growth",
+        "evidence": "beans grown on the Phaeozem registering greater leaf number and growth, confirming both scientist\u2019s and local farmer\u2019s knowledge that this soil has greater potential than the other two soils.",
+        "confidence": 0.8
+      }
+    ],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "lakevictoria.pdf",
+    "text_length": 27906,
+    "processed_at": "2025-10-23T10:39:15.958468"
+  },
+  {
+    "soil_crop_relationships": [],
+    "management_practices": [],
+    "climate_requirements": [],
+    "pdf_file": "spacial.pdf",
+    "text_length": 28173,
+    "processed_at": "2025-10-23T10:39:20.346547"
+  }
+]

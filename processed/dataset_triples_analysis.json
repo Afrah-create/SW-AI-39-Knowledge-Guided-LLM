@@ -1,0 +1,37 @@
+{
+  "total_triples": 175230,
+  "triple_types": {
+    "nutrient_requirement": 35046,
+    "zone_association": 11682,
+    "soil_requirement": 23364,
+    "texture_preference": 11682,
+    "suitability_score": 11682,
+    "yield_potential": 11682,
+    "soil_quality": 11682,
+    "climate_suitability": 11682,
+    "overall_suitability": 11682,
+    "data_quality": 11682,
+    "area_coverage": 11682,
+    "total_suitable_area": 11682
+  },
+  "predicates": {
+    "has_nitrogen_requirement": 11682,
+    "has_phosphorus_requirement": 11682,
+    "has_potassium_requirement": 11682,
+    "grows_in_agro_ecological_zone": 11682,
+    "requires_ph": 11682,
+    "requires_organic_matter": 11682,
+    "prefers_texture_class": 11682,
+    "has_suitability_score": 11682,
+    "has_yield_potential": 11682,
+    "has_soil_quality_index": 11682,
+    "has_climate_suitability": 11682,
+    "has_overall_suitability": 11682,
+    "has_data_completeness": 11682,
+    "has_area_coverage": 11682,
+    "has_total_suitable_area": 11682
+  },
+  "unique_subjects": 30,
+  "unique_objects": 26882,
+  "unique_crops": 30
+}

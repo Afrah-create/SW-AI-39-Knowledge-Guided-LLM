@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "created_at": "2025-10-23T11:13:40.567710",
+    "total_triples": 175318,
+    "version": "1.0.0",
+    "description": "Unified Agricultural Knowledge Graph for Uganda"
+  },
+  "node_types": {
+    "crop": {
+      "description": "Agricultural crops and varieties",
+      "attributes": [
+        "name",
+        "scientific_name",
+        "family",
+        "growth_period"
+      ],
+      "examples": [
+        "maize",
+        "rice",
+        "beans",
+        "cassava",
+        "banana"
+      ]
+    },
+    "soil_property": {
+      "description": "Soil properties and characteristics",
+      "attributes": [
+        "name",
+        "unit",
+        "min_value",
+        "max_value",
+        "optimal_range"
+      ],
+      "examples": [
+        "ph",
+        "organic_matter",
+        "nitrogen",
+        "phosphorus",
+        "potassium"
+      ]
+    },
+    "agro_ecological_zone": {
+      "description": "Agro-ecological zones in Uganda",
+      "attributes": [
+        "zone_id",
+        "description",
+        "climate_characteristics"
+      ],
+      "examples": [
+        "AEZ_1",
+        "AEZ_2",
+        "AEZ_3",
+        "AEZ_5",
+        "AEZ_6"
+      ]
+    },
+    "management_practice": {
+      "description": "Agricultural management practices",
+      "attributes": [
+        "type",
+        "description",
+        "application_rate",
+        "timing"
+      ],
+      "examples": [
+        "fertilization",
+        "liming",
+        "irrigation",
+        "mulching"
+      ]
+    },
+    "climate_zone": {
+      "description": "Climate zones and requirements",
+      "attributes": [
+        "name",
+        "temperature_range",
+        "rainfall_range"
+      ],
+      "examples": [
+        "tropical_wet",
+        "tropical_dry",
+        "semi_arid"
+      ]
+    }
+  },
+  "relationship_types": {
+    "has_nutrient_requirement": {
+      "description": "Crop requires specific nutrient level",
+      "weight_range": [
+        0,
+        1
+      ],
+      "attributes": [
+        "value",
+        "unit",
+        "source"
+      ]
+    },
+    "grows_in_agro_ecological_zone": {
+      "description": "Crop grows in specific agro-ecological zone",
+      "attributes": [
+        "zone_id",
+        "suitability_score"
+      ]
+    },
+    "requires_ph": {
+      "description": "Crop requires specific pH level",
+      "attributes": [
+        "value",
+        "unit",
+        "optimal_range"
+      ]
+    },
+    "prefers_texture_class": {
+      "description": "Crop prefers specific soil texture",
+      "attributes": [
+        "texture_type",
+        "suitability"
+      ]
+    },
+    "suitability": {
+      "description": "Soil-crop suitability relationship",
+      "weight_range": [
+        0,
+        1
+      ],
+      "attributes": [
+        "conditions",
+        "threshold",
+        "evidence"
+      ]
+    },
+    "recommended_for": {
+      "description": "Management practice recommended for crop",
+      "attributes": [
+        "application_rate",
+        "timing",
+        "effect"
+      ]
+    },
+    "requires_climate": {
+      "description": "Crop requires specific climate conditions",
+      "attributes": [
+        "temperature_range",
+        "rainfall_requirement"
+      ]
+    }
+  },
+  "data_sources": {
+    "dataset": "Ugandan agricultural dataset (quantitative)",
+    "literature": "Agricultural literature reviews (qualitative)"
+  }
+}

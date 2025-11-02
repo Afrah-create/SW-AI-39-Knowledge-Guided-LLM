@@ -1,0 +1,50 @@
+# Railway ignore file - exclude unnecessary files from deployment
+
+# Data files (too large, models are on Hugging Face)
+data/
+*.csv
+*.json
+!requirements.txt
+!railway.json
+
+# Model files (downloaded from Hugging Face at runtime)
+models/*.pth
+processed/trained_models/
+quick_fine_tuned_fast/checkpoint-*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment files (use Railway variables instead)
+.env
+
+# Documentation (not needed in production)
+*.md
+!README.md
+
+# Images (if not needed)
+images/
+
+# Old/backup files
+*_old.py
+*_clean.py
+DEPLOY.bat
+

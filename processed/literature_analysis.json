@@ -1,0 +1,39 @@
+{
+  "total_pdfs": 5,
+  "successful_extractions": 5,
+  "success_rate": 100.0,
+  "total_relationships": 13,
+  "total_practices": 5,
+  "total_climate": 0,
+  "relationship_types": {
+    "suitability": 3,
+    "depletion": 1,
+    "affects": 6,
+    "limiting_nutrient": 1,
+    "limiting_factor": 1,
+    "better_growth": 1
+  },
+  "crop_coverage": [
+    "Banana",
+    "crops",
+    "Maize",
+    "crop production",
+    "Mango",
+    "Common bean (Phaseolus vulgaris L.)"
+  ],
+  "soil_property_coverage": [
+    "soil nutrient availability",
+    "Sandy soils",
+    "soil pH",
+    "soil organic matter content",
+    "soil water holding capacity",
+    "Umbrisol (Luyinjayinja)",
+    "Cambisol (\u2018Limyufumyufu)",
+    "soil mineral composition",
+    "Phaeozem (Liddugavu)",
+    "Poor soils",
+    "Good soils",
+    "Soil nutrients (N, P, K)",
+    "soil texture"
+  ]
+}

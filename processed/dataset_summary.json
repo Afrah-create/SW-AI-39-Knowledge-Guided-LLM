@@ -1,0 +1,86 @@
+{
+  "total_records": 11682,
+  "unique_crops": 30,
+  "unique_zones": 12,
+  "crop_distribution": {
+    "maize": 1285,
+    "groundnut": 970,
+    "cassava": 870,
+    "yam": 754,
+    "wheat": 712,
+    "banana": 541,
+    "cotton": 535,
+    "cowpea": 535,
+    "chickpea": 435,
+    "tea": 435,
+    "carrot": 435,
+    "cocoa": 435,
+    "sweet_potato": 435,
+    "sunflower": 435,
+    "sugarcane": 435,
+    "tomato": 435,
+    "onion": 435,
+    "beans": 353,
+    "peas": 194,
+    "rice": 139,
+    "soybean": 130,
+    "mango": 100,
+    "grapes": 100,
+    "watermelon": 100,
+    "orange": 100,
+    "apple": 100,
+    "coffee": 100,
+    "sorghum": 72,
+    "potato": 48,
+    "red_pepper": 29
+  },
+  "zone_distribution": {
+    "35.0": 1065,
+    "3.0": 1046,
+    "6.0": 896,
+    "2.0": 845,
+    "33.0": 752,
+    "1.0": 752,
+    "26.0": 750,
+    "25.0": 674,
+    "5.0": 467,
+    "28.0": 431,
+    "24.0": 285,
+    "27.0": 186
+  },
+  "soil_properties": {
+    "pH": {
+      "min": 3.504752314,
+      "max": 9.93509073,
+      "mean": 6.490438819851996
+    },
+    "organic_matter": {
+      "min": 2.0,
+      "max": 2.5,
+      "mean": 2.081802319614082
+    },
+    "nitrogen": {
+      "min": 0.0,
+      "max": 140.0,
+      "mean": 42.163216057107775
+    },
+    "phosphorus": {
+      "min": 0.0,
+      "max": 782.0,
+      "mean": 20.57049845916795
+    },
+    "potassium": {
+      "min": 5.0,
+      "max": 2119.0,
+      "mean": 135.04834822804315
+    }
+  },
+  "suitability_stats": {
+    "avg_suitability_score": 0.2216468251724053,
+    "avg_yield_score": 0.891037549642323,
+    "avg_soil_quality": 0.7506591337099809,
+    "avg_climate_suitability": 0.4340138674884438,
+    "avg_overall_suitability": 0.5495032084524997
+  },
+  "preprocessing_timestamp": "2025-10-23T10:09:51.629284"
+}
