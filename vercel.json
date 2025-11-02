@@ -2,38 +2,32 @@
   "version": 2,
   "builds": [
     {
-      "src": "app/main.py",
+      "src": "api/index.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/api/recommend",
-      "dest": "app/main.py",
-      "methods": ["POST"]
-    },
-    {
-      "src": "/api/download_pdf",
-      "dest": "app/main.py",
-      "methods": ["POST"]
-    },
-    {
-      "src": "/",
-      "dest": "app/main.py"
+      "src": "/api/(.*)",
+      "dest": "api/index.py"
     },
     {
       "src": "/(.*)",
-      "dest": "app/main.py"
+      "dest": "api/index.py"
     }
   ],
   "functions": {
-    "app/main.py": {
+    "api/index.py": {
       "maxDuration": 60,
       "memory": 3008
     }
   },
   "env": {
     "PYTHONUNBUFFERED": "1"
-  }
+  },
+  "ignore": [
+    "models/",
+    "quick_fine_tuned_fast/"
+  ]
 }
 

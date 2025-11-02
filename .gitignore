@@ -32,10 +32,9 @@ Thumbs.db
 # Logs
 *.log
 
-# Model files - Now using Git LFS for large files
-# models/*.pth
-# models/*.ckpt
-# quick_fine_tuned_fast/
+# Model files - Excluded from GitHub, pushed to Hugging Face instead
+models/
+quick_fine_tuned_fast/
 
 # Data files (large datasets)
 *.csv

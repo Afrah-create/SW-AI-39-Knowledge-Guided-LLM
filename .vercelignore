@@ -1,0 +1,33 @@
+# Vercel ignore file - exclude large model files from deployment
+# Models will be downloaded from Hugging Face at runtime
+
+models/
+quick_fine_tuned_fast/
+
+# Large data files
+data/
+*.csv
+
+# Cache and temporary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.python-version
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.local
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
