@@ -35,6 +35,7 @@ Thumbs.db
 # Model files - Excluded from GitHub, pushed to Hugging Face instead
 models/
 quick_fine_tuned_fast/
+processed/trained_models/
 
 # Data files (large datasets)
 *.csv
