@@ -29,17 +29,33 @@ class AgriculturalApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
         useMaterial3: true,
-        // fontFamily: 'Poppins',  // Uncomment when fonts are added
         appBarTheme: const AppBarTheme(
           centerTitle: true,
           elevation: 0,
           backgroundColor: Color(0xFF2E7D32),
           foregroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.white),
         ),
         cardTheme: CardTheme(
           elevation: 2,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
+          ),
+          margin: const EdgeInsets.symmetric(vertical: 8),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          filled: true,
+          fillColor: Colors.grey[50],
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         ),
       ),

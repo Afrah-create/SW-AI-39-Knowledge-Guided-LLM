@@ -107,132 +107,229 @@ class _InputScreenState extends State<InputScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 600;
+    final padding = isSmallScreen ? 16.0 : 24.0;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Enter Conditions'),
       ),
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            // Soil Properties Section
-            _buildSectionHeader('Soil Properties'),
-            const SizedBox(height: 16),
-            
-            _buildSlider(
-              label: 'pH Level',
-              value: _ph,
-              min: 4.0,
-              max: 9.0,
-              divisions: 50,
-              unit: '',
-              onChanged: (value) => setState(() => _ph = value),
-            ),
-            const SizedBox(height: 16),
-            
-            _buildSlider(
-              label: 'Organic Matter',
-              value: _organicMatter,
-              min: 0.0,
-              max: 10.0,
-              divisions: 100,
-              unit: '%',
-              onChanged: (value) => setState(() => _organicMatter = value),
-            ),
-            const SizedBox(height: 16),
-            
-            _buildDropdown(
-              label: 'Soil Texture',
-              value: _textureClass,
-              items: _textureOptions,
-              onChanged: (value) => setState(() => _textureClass = value!),
-            ),
-            const SizedBox(height: 16),
-            
-            // Optional Nutrients
-            ExpansionTile(
-              title: const Text('Nutrients (Optional)'),
-              children: [
-                _buildSlider(
-                  label: 'Nitrogen',
-                  value: _nitrogen ?? 100.0,
-                  min: 0.0,
-                  max: 300.0,
-                  divisions: 300,
-                  unit: 'ppm',
-                  onChanged: (value) => setState(() => _nitrogen = value),
-                ),
-                _buildSlider(
-                  label: 'Phosphorus',
-                  value: _phosphorus ?? 30.0,
-                  min: 0.0,
-                  max: 100.0,
-                  divisions: 100,
-                  unit: 'ppm',
-                  onChanged: (value) => setState(() => _phosphorus = value),
-                ),
-                _buildSlider(
-                  label: 'Potassium',
-                  value: _potassium ?? 150.0,
-                  min: 0.0,
-                  max: 500.0,
-                  divisions: 500,
-                  unit: 'ppm',
-                  onChanged: (value) => setState(() => _potassium = value),
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            
-            // Climate Conditions Section
-            _buildSectionHeader('Climate Conditions'),
-            const SizedBox(height: 16),
-            
-            _buildSlider(
-              label: 'Average Temperature',
-              value: _temperature,
-              min: 10.0,
-              max: 40.0,
-              divisions: 300,
-              unit: '°C',
-              onChanged: (value) => setState(() => _temperature = value),
-            ),
-            const SizedBox(height: 16),
-            
-            _buildSlider(
-              label: 'Annual Rainfall',
-              value: _rainfall,
-              min: 0.0,
-              max: 3000.0,
-              divisions: 300,
-              unit: 'mm',
-              onChanged: (value) => setState(() => _rainfall = value),
-            ),
-            const SizedBox(height: 32),
-            
-            // Submit Button
-            ElevatedButton(
-              onPressed: _isLoading ? null : _getRecommendations,
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                backgroundColor: const Color(0xFF2E7D32),
-                foregroundColor: Colors.white,
-                disabledBackgroundColor: Colors.grey,
-              ),
-              child: _isLoading
-                  ? const SizedBox(
-                      height: 20,
-                      width: 20,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                      ),
-                    )
-                  : const Text(
-                      'Get Recommendations',
-                      style: TextStyle(fontSize: 18),
+      body: SafeArea(
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            padding: EdgeInsets.all(padding),
+            children: [
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 700),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                  // Soil Properties Section
+                  _buildSectionHeader(
+                    'Soil Properties',
+                    Icons.landscape,
+                    isSmallScreen,
+                  ),
+                  SizedBox(height: isSmallScreen ? 16 : 20),
+                  
+                  Card(
+                    elevation: 1,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                    child: Padding(
+                      padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+                      child: Column(
+                        children: [
+                          _buildSlider(
+                            label: 'pH Level',
+                            icon: Icons.water_drop_outlined,
+                            value: _ph,
+                            min: 4.0,
+                            max: 9.0,
+                            divisions: 50,
+                            unit: '',
+                            isSmallScreen: isSmallScreen,
+                            onChanged: (value) => setState(() => _ph = value),
+                          ),
+                          SizedBox(height: isSmallScreen ? 20 : 24),
+                          _buildSlider(
+                            label: 'Organic Matter',
+                            icon: Icons.eco_outlined,
+                            value: _organicMatter,
+                            min: 0.0,
+                            max: 10.0,
+                            divisions: 100,
+                            unit: '%',
+                            isSmallScreen: isSmallScreen,
+                            onChanged: (value) => setState(() => _organicMatter = value),
+                          ),
+                          SizedBox(height: isSmallScreen ? 20 : 24),
+                          _buildDropdown(
+                            label: 'Soil Texture',
+                            icon: Icons.layers_outlined,
+                            value: _textureClass,
+                            items: _textureOptions,
+                            isSmallScreen: isSmallScreen,
+                            onChanged: (value) => setState(() => _textureClass = value!),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: isSmallScreen ? 16 : 20),
+                  
+                  // Optional Nutrients
+                  Card(
+                    elevation: 1,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: ExpansionTile(
+                      leading: const Icon(Icons.science_outlined, color: Color(0xFF2E7D32)),
+                      title: Text(
+                        'Nutrients (Optional)',
+                        style: TextStyle(
+                          fontSize: isSmallScreen ? 15 : 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
+                          child: Column(
+                            children: [
+                              _buildSlider(
+                                label: 'Nitrogen',
+                                icon: Icons.air_outlined,
+                                value: _nitrogen ?? 100.0,
+                                min: 0.0,
+                                max: 300.0,
+                                divisions: 300,
+                                unit: 'ppm',
+                                isSmallScreen: isSmallScreen,
+                                onChanged: (value) => setState(() => _nitrogen = value),
+                              ),
+                              SizedBox(height: isSmallScreen ? 16 : 20),
+                              _buildSlider(
+                                label: 'Phosphorus',
+                                icon: Icons.whatshot_outlined,
+                                value: _phosphorus ?? 30.0,
+                                min: 0.0,
+                                max: 100.0,
+                                divisions: 100,
+                                unit: 'ppm',
+                                isSmallScreen: isSmallScreen,
+                                onChanged: (value) => setState(() => _phosphorus = value),
+                              ),
+                              SizedBox(height: isSmallScreen ? 16 : 20),
+                              _buildSlider(
+                                label: 'Potassium',
+                                icon: Icons.bolt_outlined,
+                                value: _potassium ?? 150.0,
+                                min: 0.0,
+                                max: 500.0,
+                                divisions: 500,
+                                unit: 'ppm',
+                                isSmallScreen: isSmallScreen,
+                                onChanged: (value) => setState(() => _potassium = value),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: isSmallScreen ? 24 : 28),
+                  
+                  // Climate Conditions Section
+                  _buildSectionHeader(
+                    'Climate Conditions',
+                    Icons.wb_sunny_outlined,
+                    isSmallScreen,
+                  ),
+                  SizedBox(height: isSmallScreen ? 16 : 20),
+                  
+                  Card(
+                    elevation: 1,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+                      child: Column(
+                        children: [
+                          _buildSlider(
+                            label: 'Average Temperature',
+                            icon: Icons.thermostat_outlined,
+                            value: _temperature,
+                            min: 10.0,
+                            max: 40.0,
+                            divisions: 300,
+                            unit: '°C',
+                            isSmallScreen: isSmallScreen,
+                            onChanged: (value) => setState(() => _temperature = value),
+                          ),
+                          SizedBox(height: isSmallScreen ? 20 : 24),
+                          _buildSlider(
+                            label: 'Annual Rainfall',
+                            icon: Icons.cloud_outlined,
+                            value: _rainfall,
+                            min: 0.0,
+                            max: 3000.0,
+                            divisions: 300,
+                            unit: 'mm',
+                            isSmallScreen: isSmallScreen,
+                            onChanged: (value) => setState(() => _rainfall = value),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: isSmallScreen ? 32 : 40),
+                  
+                  // Submit Button
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: _isLoading ? null : _getRecommendations,
+                      icon: _isLoading
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                              ),
+                            )
+                          : const Icon(Icons.search, size: 24),
+                      label: Text(
+                        _isLoading ? 'Analyzing...' : 'Get Recommendations',
+                        style: TextStyle(
+                          fontSize: isSmallScreen ? 16 : 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                          vertical: isSmallScreen ? 16 : 18,
+                          horizontal: 24,
+                        ),
+                        backgroundColor: const Color(0xFF2E7D32),
+                        foregroundColor: Colors.white,
+                        disabledBackgroundColor: Colors.grey[400],
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: isSmallScreen ? 16 : 24),
+                ],
+              ),
             ),
           ],
         ),
@@ -240,49 +337,76 @@ class _InputScreenState extends State<InputScreen> {
     );
   }
 
-  Widget _buildSectionHeader(String title) {
-    return Text(
-      title,
-      style: const TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-        color: Color(0xFF2E7D32),
-      ),
+  Widget _buildSectionHeader(String title, IconData icon, bool isSmallScreen) {
+    return Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: const Color(0xFF2E7D32).withOpacity(0.1),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Icon(icon, color: const Color(0xFF2E7D32), size: 20),
+        ),
+        const SizedBox(width: 12),
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: isSmallScreen ? 20 : 22,
+            fontWeight: FontWeight.bold,
+            color: const Color(0xFF2E7D32),
+          ),
+        ),
+      ],
     );
   }
 
   Widget _buildSlider({
     required String label,
+    required IconData icon,
     required double value,
     required double min,
     required double max,
     required int divisions,
     required String unit,
+    required bool isSmallScreen,
     required ValueChanged<double> onChanged,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              label,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+            Icon(icon, size: 18, color: Colors.grey[700]),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontSize: isSmallScreen ? 15 : 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey[900],
+                ),
               ),
             ),
-            Text(
-              '${value.toStringAsFixed(1)}$unit',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF2E7D32),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: const Color(0xFF2E7D32).withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text(
+                '${value.toStringAsFixed(1)}$unit',
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2E7D32),
+                ),
               ),
             ),
           ],
         ),
+        const SizedBox(height: 12),
         Slider(
           value: value,
           min: min,
@@ -291,6 +415,7 @@ class _InputScreenState extends State<InputScreen> {
           label: '${value.toStringAsFixed(1)}$unit',
           onChanged: onChanged,
           activeColor: const Color(0xFF2E7D32),
+          inactiveColor: Colors.grey[300],
         ),
       ],
     );
@@ -298,28 +423,51 @@ class _InputScreenState extends State<InputScreen> {
 
   Widget _buildDropdown({
     required String label,
+    required IconData icon,
     required String value,
     required List<String> items,
+    required bool isSmallScreen,
     required ValueChanged<String?> onChanged,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
+        Row(
+          children: [
+            Icon(icon, size: 18, color: Colors.grey[700]),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: isSmallScreen ? 15 : 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.grey[900],
+              ),
+            ),
+          ],
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 12),
         DropdownButtonFormField<String>(
           value: value,
           decoration: InputDecoration(
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: Colors.grey[300]!),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: Colors.grey[300]!),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(color: Color(0xFF2E7D32), width: 2),
+            ),
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: isSmallScreen ? 16 : 20,
+              vertical: isSmallScreen ? 14 : 16,
+            ),
+            filled: true,
+            fillColor: Colors.grey[50],
           ),
           items: items.map((item) {
             return DropdownMenuItem(
@@ -328,6 +476,10 @@ class _InputScreenState extends State<InputScreen> {
             );
           }).toList(),
           onChanged: onChanged,
+          style: TextStyle(
+            fontSize: isSmallScreen ? 15 : 16,
+            color: Colors.grey[900],
+          ),
         ),
       ],
     );
