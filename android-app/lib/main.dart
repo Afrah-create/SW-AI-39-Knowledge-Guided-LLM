@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:agricultural_app/screens/home_screen.dart';
-import 'package:agricultural_app/services/recommendation_service.dart';
-import 'package:agricultural_app/services/local_storage.dart';
+import 'screens/home_screen.dart';
+import 'services/recommendation_service.dart';
+import 'services/local_storage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +29,7 @@ class AgriculturalApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
         useMaterial3: true,
-        fontFamily: 'Poppins',
+        // fontFamily: 'Poppins',  // Uncomment when fonts are added
         appBarTheme: const AppBarTheme(
           centerTitle: true,
           elevation: 0,

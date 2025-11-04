@@ -1,9 +1,9 @@
 // lib/screens/input_screen.dart
 import 'package:flutter/material.dart';
-import 'package:agricultural_app/models/crop_models.dart';
-import 'package:agricultural_app/screens/results_screen.dart';
-import 'package:agricultural_app/services/recommendation_service.dart';
-import 'package:agricultural_app/services/local_storage.dart';
+import '../models/crop_models.dart';
+import 'results_screen.dart';
+import '../services/recommendation_service.dart';
+import '../services/local_storage.dart';
 
 class InputScreen extends StatefulWidget {
   const InputScreen({super.key});

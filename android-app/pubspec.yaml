@@ -26,6 +26,7 @@ dependencies:
   http: ^1.1.0
   intl: ^0.18.1
   json_annotation: ^4.8.1
+  path: ^1.8.3
   
   # UI Enhancements
   flutter_svg: ^2.0.9
@@ -47,9 +48,9 @@ flutter:
     - assets/images/
   
   fonts:
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-Bold.ttf
-          weight: 700
+    # - family: Poppins
+    #   fonts:
+    #     - asset: assets/fonts/Poppins-Regular.ttf
+    #     - asset: assets/fonts/Poppins-Bold.ttf
+    #       weight: 700
 

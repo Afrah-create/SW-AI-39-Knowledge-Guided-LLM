@@ -1,7 +1,7 @@
 // lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
-import 'package:agricultural_app/screens/input_screen.dart';
-import 'package:agricultural_app/services/local_storage.dart';
+import 'input_screen.dart';
+import '../services/local_storage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

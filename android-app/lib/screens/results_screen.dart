@@ -1,7 +1,7 @@
 // lib/screens/results_screen.dart
 import 'package:flutter/material.dart';
-import 'package:agricultural_app/models/crop_models.dart';
-import 'package:agricultural_app/widgets/crop_card.dart';
+import '../models/crop_models.dart';
+import '../widgets/crop_card.dart';
 
 class ResultsScreen extends StatelessWidget {
   final SoilProperties soil;

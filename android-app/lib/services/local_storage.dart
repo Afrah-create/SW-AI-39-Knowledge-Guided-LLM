@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
-import 'package:agricultural_app/models/crop_models.dart';
+import '../models/crop_models.dart';
 
 class LocalStorage {
   Database? _database;

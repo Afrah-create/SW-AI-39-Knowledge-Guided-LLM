@@ -1,7 +1,7 @@
 // lib/services/recommendation_service.dart
-import 'package:agricultural_app/models/crop_models.dart';
-import 'package:agricultural_app/services/constraint_engine.dart';
-import 'package:agricultural_app/services/model_loader.dart';
+import '../models/crop_models.dart';
+import 'constraint_engine.dart';
+import 'model_loader.dart';
 
 class RecommendationService {
   final ConstraintEngine _constraintEngine = ConstraintEngine();
