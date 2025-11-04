@@ -1,0 +1,55 @@
+name: agricultural_app
+description: Offline Agricultural Crop Recommendation App for Uganda
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # UI & Navigation
+  cupertino_icons: ^1.0.6
+  
+  # ML & Data
+  tflite_flutter: ^0.10.4
+  # onnxruntime: ^0.1.0  # Alternative to TFLite
+  
+  # Local Storage
+  sqflite: ^2.3.0
+  path_provider: ^2.1.1
+  shared_preferences: ^2.2.2
+  
+  # Utilities
+  http: ^1.1.0
+  intl: ^0.18.1
+  json_annotation: ^4.8.1
+  
+  # UI Enhancements
+  flutter_svg: ^2.0.9
+  cached_network_image: ^3.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.7
+  json_serializable: ^6.7.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/models/
+    - assets/data/
+    - assets/images/
+  
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+
