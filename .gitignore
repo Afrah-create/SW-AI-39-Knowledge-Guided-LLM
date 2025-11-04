@@ -31,19 +31,63 @@ Thumbs.db
 
 # Logs
 *.log
+logs/
+**/events.out.tfevents.*
 
 # Model files - Excluded from GitHub, pushed to Hugging Face instead
 models/
 quick_fine_tuned_fast/
 processed/trained_models/
 
+# Model file types (PyTorch, transformers, etc.)
+*.pth
+*.pt
+*.safetensors
+*.bin
+optimizer.pt
+rng_state.pth
+scheduler.pt
+training_args.bin
+trainer_state.json
+
+# Model checkpoints
+**/checkpoint-*/
+
 # Data files (large datasets)
 *.csv
 data/
 
-# Keep essential JSON files, but exclude large data JSONs
+# Large data JSON files (duplicated or processed versions)
 data/*.json
 processed/*.csv
+processed/complete_*.json
+processed/literature_analysis.json
+processed/dataset_*.json
+processed/data_cleaning_report.json
+processed/graph_metrics.json
+processed/graph_embedding_results.json
+processed/optimized_graph_embedding_results.json
+processed/unified_knowledge_graph_analysis.json
+processed/unified_knowledge_graph_schema.json
+processed/unified_knowledge_graph.json
+# Keep processed/literature_triples.json (small, <10KB, used by app)
+!processed/literature_triples.json
+
+# Old/backup files (not needed for functioning)
+app/main_old.py
+app/main_clean.py
+
+# Test images (not used in main.py)
+images/
+
+# Documentation files (keep README.md for GitHub)
+*.md
+!README.md
+
+# Deployment scripts (not needed in repo)
+DEPLOY.bat
+remove_models_from_git.bat
+remove_models_from_git.sh
 
 # Temporary files
 *.tmp
