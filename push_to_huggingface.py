@@ -6,6 +6,7 @@ Excludes models/ and quick_fine_tuned_fast/ from GitHub, pushes them to HF inste
 
 import os
 import sys
+import argparse
 from pathlib import Path
 
 try:
@@ -143,6 +144,42 @@ def push_finetuned_model(model_dir="quick_fine_tuned_fast", repo_id="Awongo/agri
 
 def main():
     """Main function"""
+    parser = argparse.ArgumentParser(
+        description="Push models to Hugging Face Hub",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Push all models (interactive)
+  python push_to_huggingface.py
+  
+  # Push only graph models
+  python push_to_huggingface.py --graph
+  
+  # Push only fine-tuned LLM
+  python push_to_huggingface.py --llm
+  
+  # Push both models
+  python push_to_huggingface.py --all
+        """
+    )
+    parser.add_argument(
+        "--graph", 
+        action="store_true",
+        help="Push graph models only"
+    )
+    parser.add_argument(
+        "--llm", 
+        action="store_true",
+        help="Push fine-tuned LLM only"
+    )
+    parser.add_argument(
+        "--all", 
+        action="store_true",
+        help="Push both graph models and fine-tuned LLM"
+    )
+    
+    args = parser.parse_args()
+    
     print("🚀 Hugging Face Model Upload Script")
     print("=" * 60)
     
@@ -157,14 +194,22 @@ def main():
         print("   Or set HF_TOKEN environment variable")
         sys.exit(1)
     
-    # Ask user which models to push
-    print("\n📋 What would you like to push?")
-    print("1. Graph models (models/) → Awongo/soil-crop-recommendation-model")
-    print("2. Fine-tuned LLM (quick_fine_tuned_fast/) → Awongo/agricultural-llm-finetuned")
-    print("3. Both")
-    print("4. Exit")
-    
-    choice = input("\nEnter your choice (1-4): ").strip()
+    # Determine what to push based on arguments
+    if args.all:
+        choice = "3"
+    elif args.graph:
+        choice = "1"
+    elif args.llm:
+        choice = "2"
+    else:
+        # Interactive mode
+        print("\n📋 What would you like to push?")
+        print("1. Graph models (models/) → Awongo/soil-crop-recommendation-model")
+        print("2. Fine-tuned LLM (quick_fine_tuned_fast/) → Awongo/agricultural-llm-finetuned")
+        print("3. Both")
+        print("4. Exit")
+        
+        choice = input("\nEnter your choice (1-4): ").strip()
     
     success = True
     
