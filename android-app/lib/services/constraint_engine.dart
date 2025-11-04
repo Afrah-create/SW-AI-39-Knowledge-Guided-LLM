@@ -1,7 +1,7 @@
 // lib/services/constraint_engine.dart
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:agricultural_app/models/crop_models.dart';
+import '../models/crop_models.dart';
 
 class CropConstraints {
   final Map<String, double> pHRange;
