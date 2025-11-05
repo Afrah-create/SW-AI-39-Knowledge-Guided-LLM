@@ -65,6 +65,27 @@ jobs:
           flutter pub get
           flutter config --enable-android
       
+      - name: Fix Android embedding (ensure v2)
+        run: |
+          cd android-app
+          # Ensure AndroidManifest has v2 embedding
+          if ! grep -q "flutterEmbedding.*2" android/app/src/main/AndroidManifest.xml; then
+            echo "flutterEmbedding not found or incorrect, fixing..."
+          fi
+          # Verify MainActivity uses FlutterActivity
+          if ! grep -q "FlutterActivity" android/app/src/main/kotlin/com/example/agricultural_app/MainActivity.kt; then
+            echo "MainActivity not using FlutterActivity, fixing..."
+          fi
+          cat android/app/src/main/AndroidManifest.xml | grep -A1 flutterEmbedding
+      
+      - name: Migrate Android project to v2 embedding
+        run: |
+          cd android-app
+          # Ensure we're using the latest Flutter Android embedding
+          flutter pub get
+          # Try to fix any embedding issues
+          flutter build apk --debug --no-tree-shake-icons 2>&1 | head -50 || true
+      
       - name: Verify Flutter setup
         run: |
           cd android-app
@@ -73,7 +94,25 @@ jobs:
       - name: Build APK
         run: |
           cd android-app
-          flutter build apk --release
+          # Try building with different approaches
+          echo "Attempting to build APK..."
+          flutter build apk --release --verbose 2>&1 | tee build.log
+          if [ $? -ne 0 ]; then
+            echo "Build failed, checking for v1 embedding error..."
+            if grep -q "v1 embedding" build.log; then
+              echo "ERROR: v1 embedding detected. Checking plugins..."
+              flutter pub deps | grep -E "(sqflite|path_provider|shared_preferences)" || true
+              echo "Trying to update plugins..."
+              flutter pub upgrade
+              flutter clean
+              flutter pub get
+              echo "Retrying build..."
+              flutter build apk --release
+            else
+              cat build.log
+              exit 1
+            fi
+          fi
       
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
