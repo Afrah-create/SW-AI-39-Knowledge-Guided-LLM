@@ -167,6 +167,16 @@ jobs:
           fi
           echo "local.properties content:"
           cat android/local.properties || echo "Failed to read local.properties"
+          
+          # Verify assets exist (TFLite models)
+          echo "=== Checking assets ==="
+          if [ ! -d "assets/models" ]; then
+            echo "WARNING: assets/models directory not found - creating it"
+            mkdir -p assets/models
+          fi
+          echo "Assets directory contents:"
+          ls -la assets/ 2>/dev/null || echo "Assets directory not found"
+          ls -la assets/models/ 2>/dev/null || echo "Models directory not found"
       
       - name: Fix Android embedding (ensure v2)
         run: |
