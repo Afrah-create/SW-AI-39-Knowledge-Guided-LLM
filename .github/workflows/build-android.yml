@@ -93,12 +93,25 @@ jobs:
       - name: Update plugins to latest versions
         run: |
           cd android-app
-          flutter pub upgrade
+          echo "Upgrading packages..."
+          flutter pub upgrade --no-precompile || true
+          echo "Packages upgraded. Getting dependencies..."
+          flutter pub get
       
       - name: Verify Flutter setup
         run: |
           cd android-app
           flutter doctor -v
+          echo "Flutter setup verified"
+      
+      - name: Prepare Android build
+        run: |
+          cd android-app
+          echo "Cleaning previous builds..."
+          flutter clean || true
+          echo "Getting dependencies..."
+          flutter pub get
+          echo "Ready to build"
       
       - name: Build APK
         run: |
