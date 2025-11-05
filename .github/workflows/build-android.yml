@@ -351,6 +351,12 @@ jobs:
                 echo "=== File/Directory Not Found Errors ==="
                 grep -i "file or directory.*not found\|cannot find\|no such file" build.log | tail -20
               fi
+              
+              # Check for TFLite/TensorFlow-specific errors
+              if grep -i "tflite\|tensorflow" build.log | grep -i "error\|fail\|exception"; then
+                echo "=== TFLite/TensorFlow Errors ==="
+                grep -i "tflite\|tensorflow" build.log | grep -i "error\|fail\|exception" | tail -20
+              fi
             fi
             
             # Try to get Gradle error details with more context
