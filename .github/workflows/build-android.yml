@@ -98,10 +98,50 @@ jobs:
       
       - name: Create local.properties
         run: |
-          cd android-app/android
+          cd android-app
+          # Get Flutter SDK path - try multiple methods
           FLUTTER_SDK=$(flutter --version --machine | grep '"flutter-sdk"' | cut -d'"' -f4)
+          if [ -z "$FLUTTER_SDK" ] || [ ! -d "$FLUTTER_SDK" ]; then
+            # Fallback: use which to find flutter binary
+            FLUTTER_BIN=$(which flutter)
+            if [ -n "$FLUTTER_BIN" ]; then
+              FLUTTER_SDK=$(dirname "$FLUTTER_BIN")
+              FLUTTER_SDK=$(dirname "$FLUTTER_SDK")
+            fi
+          fi
+          
+          # Ensure absolute path
+          if [ -n "$FLUTTER_SDK" ]; then
+            FLUTTER_SDK=$(cd "$FLUTTER_SDK" && pwd)
+          fi
+          
+          if [ -z "$FLUTTER_SDK" ] || [ ! -d "$FLUTTER_SDK" ]; then
+            echo "ERROR: Could not determine Flutter SDK path!"
+            echo "Trying to find Flutter..."
+            flutter doctor -v
+            exit 1
+          fi
+          
+          echo "Flutter SDK path: $FLUTTER_SDK"
+          echo "FLUTTER_ROOT=$FLUTTER_SDK" >> $GITHUB_ENV
+          
+          # Verify Flutter SDK structure
+          if [ ! -f "$FLUTTER_SDK/bin/flutter" ]; then
+            echo "ERROR: Flutter binary not found at $FLUTTER_SDK/bin/flutter"
+            exit 1
+          fi
+          
+          # Create local.properties in android directory with absolute path
+          cd android
           echo "flutter.sdk=$FLUTTER_SDK" > local.properties
+          echo "Created local.properties:"
           cat local.properties
+          
+          # Verify file exists and has content
+          if [ ! -f "local.properties" ] || [ ! -s "local.properties" ]; then
+            echo "ERROR: local.properties not created or empty!"
+            exit 1
+          fi
       
       - name: Install dependencies
         run: |
@@ -118,6 +158,15 @@ jobs:
           cd android-app
           flutter pub get
           flutter config --enable-android
+          
+          # Verify local.properties exists before Gradle operations
+          if [ ! -f "android/local.properties" ]; then
+            echo "ERROR: local.properties missing! Recreating..."
+            FLUTTER_SDK=$(flutter --version --machine | grep '"flutter-sdk"' | cut -d'"' -f4)
+            echo "flutter.sdk=$FLUTTER_SDK" > android/local.properties
+          fi
+          echo "local.properties content:"
+          cat android/local.properties || echo "Failed to read local.properties"
       
       - name: Fix Android embedding (ensure v2)
         run: |
