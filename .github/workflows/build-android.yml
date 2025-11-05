@@ -252,51 +252,80 @@ jobs:
       
       - name: Build APK
         id: build-apk
-        timeout-minutes: 25
+        timeout-minutes: 30
         run: |
           cd android-app
           echo "Attempting to build APK..."
           echo "This may take 10-20 minutes on first build due to dependency downloads..."
           
-          # Build with full error capture
+          # Build with full error capture - use unbuffered output
+          set -e
           BUILD_SUCCESS=false
+          
+          # Run build and capture output
           if flutter build apk --release --verbose 2>&1 | tee build.log; then
             BUILD_EXIT_CODE=0
+            echo "Flutter build command completed with exit code: $BUILD_EXIT_CODE"
           else
             BUILD_EXIT_CODE=$?
-            echo "Build command exited with code: $BUILD_EXIT_CODE"
+            echo "Flutter build command exited with code: $BUILD_EXIT_CODE"
           fi
           
           # Check if build actually succeeded by looking for APK
-          if [ -f build/app/outputs/flutter-apk/app-release.apk ]; then
+          APK_PATH="build/app/outputs/flutter-apk/app-release.apk"
+          
+          # Also check alternative locations
+          if [ -f "$APK_PATH" ]; then
             BUILD_SUCCESS=true
             echo "BUILD_SUCCESS=true" >> $GITHUB_OUTPUT
-            echo "✓ Build succeeded! APK found at: build/app/outputs/flutter-apk/app-release.apk"
-            ls -lh build/app/outputs/flutter-apk/app-release.apk
+            echo "✓ Build succeeded! APK found at: $APK_PATH"
+            ls -lh "$APK_PATH"
+            du -h "$APK_PATH"
           else
             echo "BUILD_SUCCESS=false" >> $GITHUB_OUTPUT
-            echo "✗ Build failed - APK not found at expected location"
+            echo "✗ Build failed - APK not found at expected location: $APK_PATH"
+            
+            # Search for APK in other possible locations
+            echo "=== Searching for APK files ==="
+            find build -name "*.apk" -type f 2>/dev/null || echo "No APK files found"
+            find . -name "app-release.apk" -type f 2>/dev/null || echo "No app-release.apk found"
             
             # Show comprehensive error information
-            echo "=== Build Log (last 500 lines) ==="
-            tail -500 build.log
+            echo "=== Build Log (last 1000 lines) ==="
+            if [ -f build.log ]; then
+              tail -1000 build.log || cat build.log
+            else
+              echo "Build log file not found!"
+            fi
             echo "=== End Build Log ==="
             
             # Check for specific error patterns
             echo "=== Error Analysis ==="
-            if grep -i "v1 embedding" build.log; then
-              echo "ERROR: v1 embedding detected!"
-            fi
-            if grep -i "BUILD FAILED\|FAILURE\|ERROR" build.log | tail -30; then
-              echo "Build errors found above"
+            if [ -f build.log ]; then
+              if grep -i "v1 embedding" build.log; then
+                echo "ERROR: v1 embedding detected!"
+              fi
+              if grep -i "BUILD FAILED\|FAILURE\|ERROR\|Exception" build.log | tail -50; then
+                echo "Build errors found above"
+              fi
+              if grep -i "timeout\|timed out" build.log; then
+                echo "ERROR: Build timeout detected!"
+              fi
             fi
             
             # Try to get Gradle error details
-            if grep -i "BUILD FAILED\|FAILURE" build.log; then
+            if [ -f build.log ] && grep -i "BUILD FAILED\|FAILURE" build.log; then
               echo "Attempting to get Gradle stacktrace..."
               cd android
               ./gradlew assembleRelease --stacktrace 2>&1 | tail -300 || true
+              cd ..
             fi
+            
+            # Show Gradle build directory contents
+            echo "=== Checking build directory ==="
+            ls -la build/ 2>/dev/null || echo "Build directory not found"
+            ls -la build/app/outputs/ 2>/dev/null || echo "Outputs directory not found"
+            ls -la build/app/outputs/flutter-apk/ 2>/dev/null || echo "Flutter APK directory not found"
             
             exit 1
           fi
