@@ -78,13 +78,10 @@ jobs:
           fi
           cat android/app/src/main/AndroidManifest.xml | grep -A1 flutterEmbedding
       
-      - name: Migrate Android project to v2 embedding
+      - name: Update plugins to latest versions
         run: |
           cd android-app
-          # Ensure we're using the latest Flutter Android embedding
-          flutter pub get
-          # Try to fix any embedding issues
-          flutter build apk --debug --no-tree-shake-icons 2>&1 | head -50 || true
+          flutter pub upgrade
       
       - name: Verify Flutter setup
         run: |
