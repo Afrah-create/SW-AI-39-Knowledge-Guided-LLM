@@ -40,6 +40,9 @@ jobs:
       
       - name: Accept Android licenses (before SDK operations)
         run: |
+          # Install expect for interactive license acceptance
+          sudo apt-get update && sudo apt-get install -y expect || true
+          
           # Accept all Android SDK licenses BEFORE any SDK operations
           export ANDROID_HOME=$ANDROID_HOME
           export ANDROID_SDK_ROOT=$ANDROID_HOME
@@ -56,13 +59,31 @@ jobs:
           echo "33b6a2b64607f11b759f320ef9dff34ae51681f0" > $ANDROID_HOME/licenses/android-sdk-arm-dbt-license
           echo "e9acab5b5fbb560a72cfaecce8946896ff6aab9d" > $ANDROID_HOME/licenses/android-googletv-license
           
-          # Accept licenses using sdkmanager if available
-          if [ -f "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
-            echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          fi
+          # Use expect to auto-accept licenses interactively
+          expect <<EOF || true
+set timeout 300
+spawn flutter doctor --android-licenses
+expect {
+  "Accept?" { send "y\r"; exp_continue }
+  "y/N" { send "y\r"; exp_continue }
+  "y/n" { send "y\r"; exp_continue }
+  eof
+}
+EOF
           
-          # Also accept via flutter doctor
-          echo "y" | flutter doctor --android-licenses || true
+          # Also accept via sdkmanager if available
+          if [ -f "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
+            expect <<EOF || true
+set timeout 300
+spawn $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+expect {
+  "Accept?" { send "y\r"; exp_continue }
+  "y/N" { send "y\r"; exp_continue }
+  "y/n" { send "y\r"; exp_continue }
+  eof
+}
+EOF
+          fi
           
           # Verify licenses are accepted
           ls -la $ANDROID_HOME/licenses/ || echo "License directory check"
