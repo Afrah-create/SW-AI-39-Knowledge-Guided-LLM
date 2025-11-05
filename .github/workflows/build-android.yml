@@ -601,11 +601,25 @@ jobs:
                 echo "❌ ERROR: v1 embedding detected!"
               fi
               
-              # Check for file not found errors in code
-              if grep -i "cannot find symbol\|unresolved reference\|cannot resolve" build.log; then
+              # Check for compilation errors
+              if grep -i "cannot find symbol\|unresolved reference\|cannot resolve\|method.*not found\|method.*does not exist\|no such method" build.log; then
                 echo ""
                 echo "=== Compilation Errors ==="
-                grep -i "cannot find symbol\|unresolved reference\|cannot resolve" build.log | tail -20
+                grep -i "cannot find symbol\|unresolved reference\|cannot resolve\|method.*not found\|method.*does not exist\|no such method" build.log | tail -30
+              fi
+              
+              # Check for Kotlin/Dart method signature errors
+              if grep -i "method.*override\|@override.*method\|method signature\|parameter.*type\|return type" build.log | grep -i "error\|fail"; then
+                echo ""
+                echo "=== Method Signature Errors ==="
+                grep -i "method.*override\|@override.*method\|method signature\|parameter.*type\|return type" build.log | grep -i "error\|fail" | tail -20
+              fi
+              
+              # Check for missing implementations
+              if grep -i "must be implemented\|abstract method\|not implemented\|missing implementation" build.log; then
+                echo ""
+                echo "=== Missing Implementation Errors ==="
+                grep -i "must be implemented\|abstract method\|not implemented\|missing implementation" build.log | tail -20
               fi
               
               if grep -i "timeout\|timed out" build.log; then
