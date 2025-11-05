@@ -125,10 +125,15 @@ jobs:
           BUILD_EXIT_CODE=$?
           set -e  # Re-enable exit on error
           
+          # Always show recent logs
+          echo "=== Recent build output (last 100 lines) ==="
+          tail -100 build.log || cat build.log
+          echo "=== End recent build output ==="
+          
           if [ $BUILD_EXIT_CODE -ne 0 ]; then
             echo "Build failed with exit code: $BUILD_EXIT_CODE"
-            echo "=== Full build log ==="
-            cat build.log | tail -200
+            echo "=== Full build log (last 300 lines) ==="
+            tail -300 build.log
             echo "=== End build log ==="
             
             # Check for specific errors
@@ -141,19 +146,18 @@ jobs:
               flutter pub get
               echo "Retrying build..."
               flutter build apk --release
-            elif grep -q "BUILD FAILED" build.log; then
+            elif grep -q "BUILD FAILED\|InvalidPluginException\|FAILURE" build.log; then
               echo "Gradle build failed. Getting detailed error..."
               # Try to get more Gradle details
               cd android
               echo "Running Gradle with stacktrace..."
-              ./gradlew assembleRelease --stacktrace 2>&1 | tail -150 || true
-              echo "Running Gradle with info..."
-              ./gradlew assembleRelease --info 2>&1 | grep -i "error\|fail\|exception" | tail -50 || true
+              ./gradlew assembleRelease --stacktrace 2>&1 | tail -200 || true
             fi
             
             exit $BUILD_EXIT_CODE
           fi
           
+          echo "Build succeeded! Looking for APK..."
           # List the APK location
           echo "APK build complete. Checking output location..."
           find . -name "*.apk" -type f 2>/dev/null || echo "No APK files found in current directory"
