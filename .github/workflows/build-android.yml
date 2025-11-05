@@ -60,29 +60,29 @@ jobs:
           echo "e9acab5b5fbb560a72cfaecce8946896ff6aab9d" > $ANDROID_HOME/licenses/android-googletv-license
           
           # Use expect to auto-accept licenses interactively
-          expect <<EOF || true
-set timeout 300
-spawn flutter doctor --android-licenses
-expect {
-  "Accept?" { send "y\r"; exp_continue }
-  "y/N" { send "y\r"; exp_continue }
-  "y/n" { send "y\r"; exp_continue }
-  eof
-}
-EOF
+          expect <<'EXPECTSCRIPT' || true
+          set timeout 300
+          spawn flutter doctor --android-licenses
+          expect {
+            "Accept?" { send "y\r"; exp_continue }
+            "y/N" { send "y\r"; exp_continue }
+            "y/n" { send "y\r"; exp_continue }
+            eof
+          }
+          EXPECTSCRIPT
           
           # Also accept via sdkmanager if available
           if [ -f "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
-            expect <<EOF || true
-set timeout 300
-spawn $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
-expect {
-  "Accept?" { send "y\r"; exp_continue }
-  "y/N" { send "y\r"; exp_continue }
-  "y/n" { send "y\r"; exp_continue }
-  eof
-}
-EOF
+            expect <<'EXPECTSCRIPT2' || true
+            set timeout 300
+            spawn $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+            expect {
+              "Accept?" { send "y\r"; exp_continue }
+              "y/N" { send "y\r"; exp_continue }
+              "y/n" { send "y\r"; exp_continue }
+              eof
+            }
+            EXPECTSCRIPT2
           fi
           
           # Verify licenses are accepted
