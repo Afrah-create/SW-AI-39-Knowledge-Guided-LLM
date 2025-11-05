@@ -34,16 +34,14 @@ class ModelLoader {
     }
 
     try {
-      // Prepare input
+      // Prepare input - convert to Float32List (tflite_flutter handles shape automatically)
       final inputBuffer = Float32List.fromList(input);
-      final inputTensor = inputBuffer.reshape([1, input.length]);
       
-      // Prepare output
+      // Prepare output buffer
       final outputBuffer = Float32List(1);
-      final outputTensor = outputBuffer.reshape([1, 1]);
       
-      // Run inference
-      _interpreter!.run(inputTensor, outputTensor);
+      // Run inference - interpreter handles tensor shapes based on model definition
+      _interpreter!.run(inputBuffer, outputBuffer);
       
       return outputBuffer[0];
     } catch (e) {
