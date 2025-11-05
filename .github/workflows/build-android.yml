@@ -30,8 +30,6 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '11'
-          cache: 'gradle'
-          cache-dependency-path: 'android-app/android/**/*.gradle*'
       
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
