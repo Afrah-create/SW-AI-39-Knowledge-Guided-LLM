@@ -76,7 +76,7 @@ SCRIPT
           if [ -f "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
             cat > /tmp/accept_sdkmanager.exp << 'SCRIPT2'
 set timeout 300
-            spawn "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses
+spawn "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses
 expect {
   "Accept?" { send "y\r"; exp_continue }
   "y/N" { send "y\r"; exp_continue }
