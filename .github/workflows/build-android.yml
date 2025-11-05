@@ -226,10 +226,10 @@ jobs:
           retention-days: 30
       
       - name: Upload APK to release (if tag)
-        if: startsWith(github.ref, 'refs/tags/')
+        if: steps.build-apk.outputs.BUILD_SUCCESS == 'true' && startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
-          files: android-app/build/app/outputs/flutter-apk/app-release.apk
+          files: apk-output/app-release.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
