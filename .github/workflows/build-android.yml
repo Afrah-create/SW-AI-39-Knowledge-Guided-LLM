@@ -38,6 +38,17 @@ jobs:
           channel: 'stable'
           cache: true
       
+      - name: Accept Android licenses
+        run: |
+          yes | flutter doctor --android-licenses || true
+      
+      - name: Create local.properties
+        run: |
+          cd android-app/android
+          FLUTTER_SDK=$(flutter --version --machine | grep '"flutter-sdk"' | cut -d'"' -f4)
+          echo "flutter.sdk=$FLUTTER_SDK" > local.properties
+          cat local.properties
+      
       - name: Install dependencies
         run: |
           cd android-app
