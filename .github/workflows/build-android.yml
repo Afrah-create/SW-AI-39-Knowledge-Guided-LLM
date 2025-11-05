@@ -258,8 +258,7 @@ jobs:
           echo "Attempting to build APK..."
           echo "This may take 10-20 minutes on first build due to dependency downloads..."
           
-          # Build with full error capture - use unbuffered output
-          set -e
+          # Build with full error capture
           BUILD_SUCCESS=false
           
           # Run build and capture output
