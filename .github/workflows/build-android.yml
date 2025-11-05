@@ -112,6 +112,8 @@ jobs:
           echo "Getting dependencies..."
           flutter pub get
           echo "Ready to build"
+          # Verify we can access Android tools
+          flutter doctor -v | grep -i android || true
       
       - name: Build APK
         run: |
