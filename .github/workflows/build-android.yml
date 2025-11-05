@@ -38,7 +38,10 @@ jobs:
           channel: 'stable'
           cache: true
       
-      - name: Accept Android licenses (before SDK operations)
+      - name: Accept Android licenses
+        uses: android-actions/setup-android@v3
+      
+      - name: Accept Android licenses (backup method)
         run: |
           # Install expect for interactive license acceptance
           sudo apt-get update && sudo apt-get install -y expect || true
@@ -72,7 +75,7 @@ jobs:
             echo '  "y" { send "y\r"; exp_continue }' >> /tmp/accept_sdk.exp
             echo '  eof' >> /tmp/accept_sdk.exp
             echo '}' >> /tmp/accept_sdk.exp
-            expect /tmp/accept_sdk.exp || echo "SDK manager license acceptance completed"
+            timeout 120 expect /tmp/accept_sdk.exp || echo "SDK manager license acceptance completed"
           fi
           
           # Also accept via flutter doctor
