@@ -120,13 +120,18 @@ jobs:
           cd android-app
           # Try building with different approaches
           echo "Attempting to build APK..."
-          flutter build apk --release --verbose 2>&1 | tee build.log || true
+          set +e  # Don't exit on error immediately
+          flutter build apk --release --verbose 2>&1 | tee build.log
           BUILD_EXIT_CODE=$?
+          set -e  # Re-enable exit on error
           
           if [ $BUILD_EXIT_CODE -ne 0 ]; then
             echo "Build failed with exit code: $BUILD_EXIT_CODE"
-            echo "Checking for specific errors..."
+            echo "=== Full build log ==="
+            cat build.log | tail -200
+            echo "=== End build log ==="
             
+            # Check for specific errors
             if grep -q "v1 embedding" build.log; then
               echo "ERROR: v1 embedding detected. Checking plugins..."
               flutter pub deps | grep -E "(sqflite|path_provider|shared_preferences)" || true
@@ -136,21 +141,17 @@ jobs:
               flutter pub get
               echo "Retrying build..."
               flutter build apk --release
-            else
-              echo "=== Full build log ==="
-              cat build.log
-              echo "=== End build log ==="
-              
-              # Check for Gradle errors
-              if grep -q "BUILD FAILED" build.log; then
-                echo "Gradle build failed. Checking for specific errors..."
-                # Try to get more Gradle details
-                cd android
-                ./gradlew assembleRelease --stacktrace 2>&1 | tail -100 || true
-              fi
-              
-              exit $BUILD_EXIT_CODE
+            elif grep -q "BUILD FAILED" build.log; then
+              echo "Gradle build failed. Getting detailed error..."
+              # Try to get more Gradle details
+              cd android
+              echo "Running Gradle with stacktrace..."
+              ./gradlew assembleRelease --stacktrace 2>&1 | tail -150 || true
+              echo "Running Gradle with info..."
+              ./gradlew assembleRelease --info 2>&1 | grep -i "error\|fail\|exception" | tail -50 || true
             fi
+            
+            exit $BUILD_EXIT_CODE
           fi
           
           # List the APK location
