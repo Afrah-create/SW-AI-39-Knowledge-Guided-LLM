@@ -262,12 +262,14 @@ jobs:
           BUILD_SUCCESS=false
           
           # Run build and capture output
-          if flutter build apk --release --verbose 2>&1 | tee build.log; then
-            BUILD_EXIT_CODE=0
-            echo "Flutter build command completed with exit code: $BUILD_EXIT_CODE"
+          # Use unbuffered output to see errors immediately
+          flutter build apk --release --verbose 2>&1 | tee build.log
+          BUILD_EXIT_CODE=${PIPESTATUS[0]}
+          
+          if [ $BUILD_EXIT_CODE -eq 0 ]; then
+            echo "Flutter build command completed successfully with exit code: $BUILD_EXIT_CODE"
           else
-            BUILD_EXIT_CODE=$?
-            echo "Flutter build command exited with code: $BUILD_EXIT_CODE"
+            echo "Flutter build command failed with exit code: $BUILD_EXIT_CODE"
           fi
           
           # Check if build actually succeeded by looking for APK
