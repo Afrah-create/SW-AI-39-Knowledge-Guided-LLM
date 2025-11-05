@@ -40,7 +40,8 @@ jobs:
       
       - name: Accept Android licenses
         run: |
-          yes | flutter doctor --android-licenses || true
+          yes | sdkmanager --licenses || true
+          flutter doctor --android-licenses <<< $'y\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\n' || true
       
       - name: Create local.properties
         run: |
