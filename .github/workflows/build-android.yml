@@ -122,12 +122,42 @@ jobs:
               exit 1
             fi
           fi
+          # List the APK location
+          echo "APK build complete. Checking output location..."
+          find . -name "*.apk" -type f 2>/dev/null || true
+          ls -la build/app/outputs/flutter-apk/ 2>/dev/null || true
+      
+      - name: Find and upload APK artifact
+        run: |
+          cd android-app
+          # Try multiple possible locations
+          if [ -f build/app/outputs/flutter-apk/app-release.apk ]; then
+            APK_PATH="build/app/outputs/flutter-apk/app-release.apk"
+          elif [ -f build/app/outputs/apk/release/app-release.apk ]; then
+            APK_PATH="build/app/outputs/apk/release/app-release.apk"
+          else
+            # Find any APK file
+            APK_PATH=$(find build -name "*.apk" -type f | head -1)
+          fi
+          
+          if [ -z "$APK_PATH" ] || [ ! -f "$APK_PATH" ]; then
+            echo "ERROR: APK file not found!"
+            echo "Searching for APK files..."
+            find build -name "*.apk" -type f || true
+            exit 1
+          fi
+          
+          echo "Found APK at: $APK_PATH"
+          echo "APK size: $(du -h $APK_PATH)"
+          # Copy to a known location for upload
+          mkdir -p ../../apk-output
+          cp "$APK_PATH" ../../apk-output/app-release.apk
       
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: agricultural-app-apk
-          path: android-app/build/app/outputs/flutter-apk/app-release.apk
+          path: apk-output/app-release.apk
           retention-days: 30
       
       - name: Upload APK to release (if tag)
