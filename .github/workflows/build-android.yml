@@ -116,10 +116,12 @@ jobs:
           flutter doctor -v | grep -i android || true
       
       - name: Build APK
+        timeout-minutes: 20
         run: |
           cd android-app
           # Try building with different approaches
           echo "Attempting to build APK..."
+          echo "This may take 5-15 minutes on first build due to dependency downloads..."
           set +e  # Don't exit on error immediately
           flutter build apk --release --verbose 2>&1 | tee build.log
           BUILD_EXIT_CODE=$?
