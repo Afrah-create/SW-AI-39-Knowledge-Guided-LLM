@@ -105,9 +105,13 @@ jobs:
           cd android-app
           # Try building with different approaches
           echo "Attempting to build APK..."
-          flutter build apk --release --verbose 2>&1 | tee build.log
-          if [ $? -ne 0 ]; then
-            echo "Build failed, checking for v1 embedding error..."
+          flutter build apk --release --verbose 2>&1 | tee build.log || true
+          BUILD_EXIT_CODE=$?
+          
+          if [ $BUILD_EXIT_CODE -ne 0 ]; then
+            echo "Build failed with exit code: $BUILD_EXIT_CODE"
+            echo "Checking for specific errors..."
+            
             if grep -q "v1 embedding" build.log; then
               echo "ERROR: v1 embedding detected. Checking plugins..."
               flutter pub deps | grep -E "(sqflite|path_provider|shared_preferences)" || true
@@ -118,40 +122,79 @@ jobs:
               echo "Retrying build..."
               flutter build apk --release
             else
+              echo "=== Full build log ==="
               cat build.log
-              exit 1
+              echo "=== End build log ==="
+              
+              # Check for Gradle errors
+              if grep -q "BUILD FAILED" build.log; then
+                echo "Gradle build failed. Checking for specific errors..."
+                # Try to get more Gradle details
+                cd android
+                ./gradlew assembleRelease --stacktrace 2>&1 | tail -100 || true
+              fi
+              
+              exit $BUILD_EXIT_CODE
             fi
           fi
+          
           # List the APK location
           echo "APK build complete. Checking output location..."
-          find . -name "*.apk" -type f 2>/dev/null || true
-          ls -la build/app/outputs/flutter-apk/ 2>/dev/null || true
+          find . -name "*.apk" -type f 2>/dev/null || echo "No APK files found in current directory"
+          ls -la build/app/outputs/flutter-apk/ 2>/dev/null || echo "build/app/outputs/flutter-apk/ does not exist"
+          
+          # Check parent directory (build might be there due to custom build dir)
+          if [ -d ../build ]; then
+            echo "Checking parent build directory..."
+            find ../build -name "*.apk" -type f 2>/dev/null || true
+          fi
       
       - name: Find and upload APK artifact
         run: |
           cd android-app
           # Try multiple possible locations
+          APK_PATH=""
+          
+          # Standard Flutter location
           if [ -f build/app/outputs/flutter-apk/app-release.apk ]; then
             APK_PATH="build/app/outputs/flutter-apk/app-release.apk"
+          # Alternative location
           elif [ -f build/app/outputs/apk/release/app-release.apk ]; then
             APK_PATH="build/app/outputs/apk/release/app-release.apk"
+          # Check in android/app/build
+          elif [ -f android/app/build/outputs/flutter-apk/app-release.apk ]; then
+            APK_PATH="android/app/build/outputs/flutter-apk/app-release.apk"
+          # Check parent directory (if custom build dir was used)
+          elif [ -f ../build/app/outputs/flutter-apk/app-release.apk ]; then
+            APK_PATH="../build/app/outputs/flutter-apk/app-release.apk"
           else
-            # Find any APK file
-            APK_PATH=$(find build -name "*.apk" -type f | head -1)
+            # Find any APK file recursively
+            echo "Searching for APK files..."
+            APK_PATH=$(find . -name "*.apk" -type f 2>/dev/null | grep -E "(release|app-release)" | head -1)
+            if [ -z "$APK_PATH" ]; then
+              APK_PATH=$(find .. -name "*.apk" -type f 2>/dev/null | grep -E "(release|app-release)" | head -1)
+            fi
           fi
           
           if [ -z "$APK_PATH" ] || [ ! -f "$APK_PATH" ]; then
             echo "ERROR: APK file not found!"
-            echo "Searching for APK files..."
-            find build -name "*.apk" -type f || true
+            echo "Searched locations:"
+            echo "  - build/app/outputs/flutter-apk/app-release.apk"
+            echo "  - build/app/outputs/apk/release/app-release.apk"
+            echo "  - android/app/build/outputs/flutter-apk/app-release.apk"
+            echo "  - ../build/app/outputs/flutter-apk/app-release.apk"
+            echo ""
+            echo "All APK files found:"
+            find . -name "*.apk" -type f 2>/dev/null || echo "  (none found)"
             exit 1
           fi
           
           echo "Found APK at: $APK_PATH"
-          echo "APK size: $(du -h $APK_PATH)"
+          echo "APK size: $(du -h "$APK_PATH" | cut -f1)"
           # Copy to a known location for upload
           mkdir -p ../../apk-output
           cp "$APK_PATH" ../../apk-output/app-release.apk
+          echo "APK copied to apk-output/app-release.apk"
       
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
