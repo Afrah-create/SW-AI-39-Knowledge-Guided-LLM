@@ -303,22 +303,35 @@ jobs:
             # Check for specific error patterns
             echo "=== Error Analysis ==="
             if [ -f build.log ]; then
+              # Show the actual error message (usually appears before stack trace)
+              echo "=== Actual Error Message ==="
+              grep -i "error\|exception\|failed" build.log | grep -v "at org\|at com\|at java\|Caused by" | tail -20 || echo "No clear error message found"
+              
               if grep -i "v1 embedding" build.log; then
                 echo "ERROR: v1 embedding detected!"
               fi
-              if grep -i "BUILD FAILED\|FAILURE\|ERROR\|Exception" build.log | tail -50; then
-                echo "Build errors found above"
+              
+              # Show BUILD FAILED context
+              if grep -i "BUILD FAILED" build.log; then
+                echo "=== BUILD FAILED context ==="
+                grep -B 50 "BUILD FAILED" build.log | tail -60 || true
               fi
+              
+              # Show any exceptions
+              echo "=== Exceptions Found ==="
+              grep -i "exception\|error:" build.log | grep -v "^\[" | tail -30 || echo "No exceptions found"
+              
               if grep -i "timeout\|timed out" build.log; then
                 echo "ERROR: Build timeout detected!"
               fi
             fi
             
-            # Try to get Gradle error details
+            # Try to get Gradle error details with more context
             if [ -f build.log ] && grep -i "BUILD FAILED\|FAILURE" build.log; then
-              echo "Attempting to get Gradle stacktrace..."
+              echo "=== Attempting to get Gradle stacktrace with more context ==="
               cd android
-              ./gradlew assembleRelease --stacktrace 2>&1 | tail -300 || true
+              echo "Running Gradle assembleRelease with full output..."
+              ./gradlew assembleRelease --stacktrace --info 2>&1 | tail -500 || true
               cd ..
             fi
             
