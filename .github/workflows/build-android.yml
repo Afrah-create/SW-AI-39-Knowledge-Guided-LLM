@@ -59,30 +59,32 @@ jobs:
           echo "33b6a2b64607f11b759f320ef9dff34ae51681f0" > $ANDROID_HOME/licenses/android-sdk-arm-dbt-license
           echo "e9acab5b5fbb560a72cfaecce8946896ff6aab9d" > $ANDROID_HOME/licenses/android-googletv-license
           
-          # Use expect to auto-accept licenses interactively
-          expect <<'EXPECTSCRIPT' || true
-set timeout 300
-spawn flutter doctor --android-licenses
-expect {
-  "Accept?" { send "y\r"; exp_continue }
-  "y/N" { send "y\r"; exp_continue }
-  "y/n" { send "y\r"; exp_continue }
-  eof
-}
-EXPECTSCRIPT
+          # Create expect script file to avoid heredoc issues
+          cat > /tmp/accept_licenses.exp << 'SCRIPT'
+          set timeout 300
+          spawn flutter doctor --android-licenses
+          expect {
+            "Accept?" { send "y\r"; exp_continue }
+            "y/N" { send "y\r"; exp_continue }
+            "y/n" { send "y\r"; exp_continue }
+            eof
+          }
+          SCRIPT
+          expect /tmp/accept_licenses.exp || true
           
           # Also accept via sdkmanager if available
           if [ -f "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
-            expect <<'EXPECTSCRIPT2' || true
-set timeout 300
-spawn $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
-expect {
-  "Accept?" { send "y\r"; exp_continue }
-  "y/N" { send "y\r"; exp_continue }
-  "y/n" { send "y\r"; exp_continue }
-  eof
-}
-EXPECTSCRIPT2
+            cat > /tmp/accept_sdkmanager.exp << 'SCRIPT2'
+            set timeout 300
+            spawn $env(ANDROID_HOME)/cmdline-tools/latest/bin/sdkmanager --licenses
+            expect {
+              "Accept?" { send "y\r"; exp_continue }
+              "y/N" { send "y\r"; exp_continue }
+              "y/n" { send "y\r"; exp_continue }
+              eof
+            }
+            SCRIPT2
+            expect /tmp/accept_sdkmanager.exp || true
           fi
           
           # Verify licenses are accepted
@@ -179,16 +181,17 @@ EXPECTSCRIPT2
           
           # Use expect to auto-accept any remaining licenses
           if command -v expect >/dev/null 2>&1; then
-            expect <<'EXPECTSCRIPT3' || true
-set timeout 300
-spawn flutter doctor --android-licenses
-expect {
-  "Accept?" { send "y\r"; exp_continue }
-  "y/N" { send "y\r"; exp_continue }
-  "y/n" { send "y\r"; exp_continue }
-  eof
-}
-EXPECTSCRIPT3
+            cat > /tmp/accept_final.exp << 'SCRIPT3'
+            set timeout 300
+            spawn flutter doctor --android-licenses
+            expect {
+              "Accept?" { send "y\r"; exp_continue }
+              "y/N" { send "y\r"; exp_continue }
+              "y/n" { send "y\r"; exp_continue }
+              eof
+            }
+            SCRIPT3
+            expect /tmp/accept_final.exp || true
           else
             # Fallback: pipe yes to licenses
             yes | flutter doctor --android-licenses || true
