@@ -179,15 +179,16 @@ jobs:
           
           # Use expect to auto-accept any remaining licenses
           if command -v expect >/dev/null 2>&1; then
-            expect <<EOF
-set timeout 300
-spawn flutter doctor --android-licenses
-expect {
-  "Accept?" { send "y\r"; exp_continue }
-  "y/N" { send "y\r"; exp_continue }
-  eof
-}
-EOF
+            expect <<'EXPECTSCRIPT3' || true
+            set timeout 300
+            spawn flutter doctor --android-licenses
+            expect {
+              "Accept?" { send "y\r"; exp_continue }
+              "y/N" { send "y\r"; exp_continue }
+              "y/n" { send "y\r"; exp_continue }
+              eof
+            }
+            EXPECTSCRIPT3
           else
             # Fallback: pipe yes to licenses
             yes | flutter doctor --android-licenses || true
