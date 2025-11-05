@@ -299,9 +299,9 @@ jobs:
             find . -name "app-release.apk" -type f 2>/dev/null || echo "No app-release.apk found"
             
             # Show comprehensive error information
-            echo "=== Build Log (last 1000 lines) ==="
+            echo "=== Build Log (last 500 lines - most recent first) ==="
             if [ -f build.log ]; then
-              tail -1000 build.log || cat build.log
+              tail -500 build.log || cat build.log
             else
               echo "Build log file not found!"
             fi
@@ -310,26 +310,36 @@ jobs:
             # Check for specific error patterns
             echo "=== Error Analysis ==="
             if [ -f build.log ]; then
+              # Show the END of the log first (where errors usually appear)
+              echo "=== Last 100 lines of build log ==="
+              tail -100 build.log
+              
               # Show the actual error message (usually appears before stack trace)
               echo "=== Actual Error Message ==="
-              grep -i "error\|exception\|failed" build.log | grep -v "at org\|at com\|at java\|Caused by" | tail -20 || echo "No clear error message found"
+              grep -i "error\|exception\|failed" build.log | grep -v "at org\|at com\|at java\|Caused by\|Resource missing" | tail -30 || echo "No clear error message found"
               
               if grep -i "v1 embedding" build.log; then
                 echo "ERROR: v1 embedding detected!"
               fi
               
-              # Show BUILD FAILED context
-              if grep -i "BUILD FAILED" build.log; then
-                echo "=== BUILD FAILED context ==="
-                grep -B 50 "BUILD FAILED" build.log | tail -60 || true
+              # Show BUILD FAILED context with more lines before
+              if grep -i "BUILD FAILED\|FAILURE" build.log; then
+                echo "=== BUILD FAILED context (last 100 lines before failure) ==="
+                grep -B 100 "BUILD FAILED\|FAILURE" build.log | tail -120 || true
               fi
               
-              # Show any exceptions
+              # Show any exceptions with more context
               echo "=== Exceptions Found ==="
-              grep -i "exception\|error:" build.log | grep -v "^\[" | tail -30 || echo "No exceptions found"
+              grep -i "exception\|error:" build.log | grep -v "^\[.*Resource missing\|at org\|at com\|at java" | tail -40 || echo "No exceptions found"
               
               if grep -i "timeout\|timed out" build.log; then
                 echo "ERROR: Build timeout detected!"
+              fi
+              
+              # Check for file not found errors
+              if grep -i "file or directory.*not found\|cannot find\|no such file" build.log; then
+                echo "=== File/Directory Not Found Errors ==="
+                grep -i "file or directory.*not found\|cannot find\|no such file" build.log | tail -20
               fi
             fi
             
