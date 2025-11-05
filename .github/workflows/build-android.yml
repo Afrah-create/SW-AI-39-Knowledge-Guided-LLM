@@ -54,6 +54,17 @@ jobs:
           cd android-app
           flutter pub get
       
+      - name: Clean Flutter build
+        run: |
+          cd android-app
+          flutter clean
+      
+      - name: Verify project structure
+        run: |
+          cd android-app
+          flutter pub get
+          flutter config --enable-android
+      
       - name: Verify Flutter setup
         run: |
           cd android-app
