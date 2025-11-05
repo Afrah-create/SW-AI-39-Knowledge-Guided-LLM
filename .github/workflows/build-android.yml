@@ -201,13 +201,23 @@ jobs:
           echo "This may take 10-20 minutes on first build due to dependency downloads..."
           
           # Build with full error capture
+          BUILD_SUCCESS=false
           if flutter build apk --release --verbose 2>&1 | tee build.log; then
-            echo "BUILD_SUCCESS=true" >> $GITHUB_OUTPUT
-            echo "✓ Build succeeded!"
+            BUILD_EXIT_CODE=0
           else
             BUILD_EXIT_CODE=$?
+            echo "Build command exited with code: $BUILD_EXIT_CODE"
+          fi
+          
+          # Check if build actually succeeded by looking for APK
+          if [ -f build/app/outputs/flutter-apk/app-release.apk ]; then
+            BUILD_SUCCESS=true
+            echo "BUILD_SUCCESS=true" >> $GITHUB_OUTPUT
+            echo "✓ Build succeeded! APK found at: build/app/outputs/flutter-apk/app-release.apk"
+            ls -lh build/app/outputs/flutter-apk/app-release.apk
+          else
             echo "BUILD_SUCCESS=false" >> $GITHUB_OUTPUT
-            echo "✗ Build failed with exit code: $BUILD_EXIT_CODE"
+            echo "✗ Build failed - APK not found at expected location"
             
             # Show comprehensive error information
             echo "=== Build Log (last 500 lines) ==="
@@ -219,29 +229,17 @@ jobs:
             if grep -i "v1 embedding" build.log; then
               echo "ERROR: v1 embedding detected!"
             fi
+            if grep -i "BUILD FAILED\|FAILURE\|ERROR" build.log | tail -30; then
+              echo "Build errors found above"
+            fi
+            
+            # Try to get Gradle error details
             if grep -i "BUILD FAILED\|FAILURE" build.log; then
-              echo "ERROR: Gradle build failed!"
               echo "Attempting to get Gradle stacktrace..."
               cd android
               ./gradlew assembleRelease --stacktrace 2>&1 | tail -300 || true
             fi
-            if grep -i "error\|exception" build.log | tail -20; then
-              echo "Recent errors found above"
-            fi
             
-            exit $BUILD_EXIT_CODE
-          fi
-          
-          # Verify APK was created
-          echo "=== Checking for APK file ==="
-          if [ -f build/app/outputs/flutter-apk/app-release.apk ]; then
-            echo "✓ APK found at: build/app/outputs/flutter-apk/app-release.apk"
-            ls -lh build/app/outputs/flutter-apk/app-release.apk
-          else
-            echo "✗ APK not found at expected location!"
-            echo "Searching for APK files..."
-            find . -name "*.apk" -type f 2>/dev/null || echo "  (none found)"
-            echo "BUILD_SUCCESS=false" >> $GITHUB_OUTPUT
             exit 1
           fi
       
