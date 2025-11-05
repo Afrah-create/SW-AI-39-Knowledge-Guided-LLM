@@ -566,23 +566,47 @@ jobs:
               echo "=== Last 100 lines of build log ==="
               tail -100 build.log
               
-              # Show the actual error message (usually appears before stack trace)
-              echo "=== Actual Error Message ==="
-              grep -i "error\|exception\|failed" build.log | grep -v "at org\|at com\|at java\|Caused by\|Resource missing" | tail -30 || echo "No clear error message found"
+              # Extract the actual error message - look for lines with "ERROR", "FAILURE", "Exception" but not stack traces
+              echo "=== Actual Error Message (Root Cause) ==="
+              # Find the first error/exception line before stack traces start
+              ERROR_LINE=$(grep -n -i "error\|exception\|failed\|failure" build.log | grep -v "at org\|at com\|at java\|Caused by\|Resource missing\|^\[" | head -5)
+              if [ -n "$ERROR_LINE" ]; then
+                echo "$ERROR_LINE"
+              else
+                echo "No clear error message found in standard format"
+              fi
               
+              # Show what happened right before BUILD FAILED
+              if grep -qi "BUILD FAILED\|FAILURE" build.log; then
+                echo ""
+                echo "=== Context Before BUILD FAILED ==="
+                # Get lines before BUILD FAILED, excluding stack traces
+                grep -B 30 "BUILD FAILED\|FAILURE" build.log | grep -v "^\[.*ms\]\|at org\|at com\|at java\|Caused by:" | tail -20 || true
+              fi
+              
+              # Show exceptions with context
+              echo ""
+              echo "=== Exception Details ==="
+              # Find exception messages (not stack traces)
+              EXCEPTION_LINES=$(grep -i "exception\|error:" build.log | grep -v "^\[.*ms\]\|at org\|at com\|at java\|Caused by:\|Resource missing" | tail -20)
+              if [ -n "$EXCEPTION_LINES" ]; then
+                echo "$EXCEPTION_LINES"
+              else
+                echo "No exception messages found (may be in stack trace format)"
+              fi
+              
+              # Check for specific known errors
               if grep -i "v1 embedding" build.log; then
-                echo "ERROR: v1 embedding detected!"
+                echo ""
+                echo "❌ ERROR: v1 embedding detected!"
               fi
               
-              # Show BUILD FAILED context with more lines before
-              if grep -i "BUILD FAILED\|FAILURE" build.log; then
-                echo "=== BUILD FAILED context (last 100 lines before failure) ==="
-                grep -B 100 "BUILD FAILED\|FAILURE" build.log | tail -120 || true
+              # Check for file not found errors in code
+              if grep -i "cannot find symbol\|unresolved reference\|cannot resolve" build.log; then
+                echo ""
+                echo "=== Compilation Errors ==="
+                grep -i "cannot find symbol\|unresolved reference\|cannot resolve" build.log | tail -20
               fi
-              
-              # Show any exceptions with more context
-              echo "=== Exceptions Found ==="
-              grep -i "exception\|error:" build.log | grep -v "^\[.*Resource missing\|at org\|at com\|at java" | tail -40 || echo "No exceptions found"
               
               if grep -i "timeout\|timed out" build.log; then
                 echo "ERROR: Build timeout detected!"
