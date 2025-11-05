@@ -263,12 +263,15 @@ jobs:
           
           # Run build and capture output
           # Filter out harmless "Resource missing" messages (Gradle tries multiple repos)
-          # Use unbuffered output to see errors immediately
-          flutter build apk --release --verbose 2>&1 | grep -v "Resource missing" | tee build.log
-          BUILD_EXIT_CODE=${PIPESTATUS[0]}
-          
           # Note: "Resource missing" messages are normal - Gradle checks multiple repositories
           # If a dependency isn't in Google's repo, it tries Maven Central, etc.
+          flutter build apk --release --verbose 2>&1 | grep -v "Resource missing" | tee build.log
+          BUILD_EXIT_CODE=${PIPESTATUS[0]}  # Check flutter build exit code, not grep
+          
+          # Ensure grep didn't fail (it shouldn't, but check just in case)
+          if [ ${PIPESTATUS[1]} -ne 0 ] && [ ${PIPESTATUS[1]} -ne 1 ]; then
+            echo "Warning: grep filter had unexpected exit code: ${PIPESTATUS[1]}"
+          fi
           
           if [ $BUILD_EXIT_CODE -eq 0 ]; then
             echo "Flutter build command completed successfully with exit code: $BUILD_EXIT_CODE"
