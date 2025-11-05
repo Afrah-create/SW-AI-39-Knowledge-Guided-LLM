@@ -260,6 +260,241 @@ jobs:
           fi
           echo "All licenses accepted"
       
+      - name: Pre-build validation and error detection
+        run: |
+          cd android-app
+          echo "=========================================="
+          echo "Pre-build Validation & Error Detection"
+          echo "=========================================="
+          
+          ERROR_COUNT=0
+          WARNING_COUNT=0
+          
+          # 1. Check Flutter SDK integrity
+          echo ""
+          echo "1. Checking Flutter SDK..."
+          if ! flutter --version > /dev/null 2>&1; then
+            echo "❌ ERROR: Flutter command not working"
+            ERROR_COUNT=$((ERROR_COUNT + 1))
+          else
+            echo "✓ Flutter SDK accessible"
+          fi
+          
+          # 2. Check Android SDK components
+          echo ""
+          echo "2. Checking Android SDK components..."
+          if [ -z "$ANDROID_HOME" ]; then
+            echo "❌ ERROR: ANDROID_HOME not set"
+            ERROR_COUNT=$((ERROR_COUNT + 1))
+          else
+            echo "✓ ANDROID_HOME: $ANDROID_HOME"
+            
+            # Check for required SDK components
+            if [ ! -d "$ANDROID_HOME/platform-tools" ]; then
+              echo "⚠ WARNING: platform-tools not found"
+              WARNING_COUNT=$((WARNING_COUNT + 1))
+            else
+              echo "✓ platform-tools found"
+            fi
+            
+            if [ ! -d "$ANDROID_HOME/build-tools" ]; then
+              echo "⚠ WARNING: build-tools not found"
+              WARNING_COUNT=$((WARNING_COUNT + 1))
+            else
+              echo "✓ build-tools found"
+              ls -1 "$ANDROID_HOME/build-tools" | head -1 | xargs -I {} echo "  Version: {}"
+            fi
+            
+            # Check NDK (optional but recommended)
+            if [ ! -d "$ANDROID_HOME/ndk" ] && [ -z "$(ls -A $ANDROID_HOME/ndk 2>/dev/null)" ]; then
+              echo "⚠ WARNING: NDK not found (may be needed for native code)"
+              WARNING_COUNT=$((WARNING_COUNT + 1))
+            else
+              echo "✓ NDK found"
+            fi
+          fi
+          
+          # 3. Check local.properties
+          echo ""
+          echo "3. Checking local.properties..."
+          if [ ! -f "android/local.properties" ]; then
+            echo "❌ ERROR: android/local.properties not found"
+            ERROR_COUNT=$((ERROR_COUNT + 1))
+          else
+            echo "✓ local.properties exists"
+            if ! grep -q "flutter.sdk" android/local.properties; then
+              echo "❌ ERROR: flutter.sdk not set in local.properties"
+              ERROR_COUNT=$((ERROR_COUNT + 1))
+            else
+              FLUTTER_SDK_FROM_PROPS=$(grep "flutter.sdk" android/local.properties | cut -d'=' -f2)
+              if [ ! -d "$FLUTTER_SDK_FROM_PROPS" ]; then
+                echo "❌ ERROR: Flutter SDK path in local.properties is invalid: $FLUTTER_SDK_FROM_PROPS"
+                ERROR_COUNT=$((ERROR_COUNT + 1))
+              else
+                echo "✓ Flutter SDK path valid: $FLUTTER_SDK_FROM_PROPS"
+              fi
+            fi
+          fi
+          
+          # 4. Check Gradle configuration
+          echo ""
+          echo "4. Checking Gradle configuration..."
+          if [ ! -f "android/settings.gradle.kts" ] && [ ! -f "android/settings.gradle" ]; then
+            echo "❌ ERROR: Gradle settings file not found"
+            ERROR_COUNT=$((ERROR_COUNT + 1))
+          else
+            echo "✓ Gradle settings file exists"
+          fi
+          
+          if [ ! -f "android/app/build.gradle.kts" ] && [ ! -f "android/app/build.gradle" ]; then
+            echo "❌ ERROR: app/build.gradle file not found"
+            ERROR_COUNT=$((ERROR_COUNT + 1))
+          else
+            echo "✓ app/build.gradle exists"
+          fi
+          
+          # Check Gradle wrapper
+          if [ ! -f "android/gradle/wrapper/gradle-wrapper.properties" ]; then
+            echo "❌ ERROR: Gradle wrapper not found"
+            ERROR_COUNT=$((ERROR_COUNT + 1))
+          else
+            echo "✓ Gradle wrapper exists"
+            GRADLE_VERSION=$(grep "distributionUrl" android/gradle/wrapper/gradle-wrapper.properties | sed 's/.*gradle-\([0-9.]*\)-.*/\1/')
+            echo "  Gradle version: $GRADLE_VERSION"
+          fi
+          
+          # 5. Check AndroidManifest.xml
+          echo ""
+          echo "5. Checking AndroidManifest.xml..."
+          if [ ! -f "android/app/src/main/AndroidManifest.xml" ]; then
+            echo "⚠ WARNING: AndroidManifest.xml not found (will be generated)"
+            WARNING_COUNT=$((WARNING_COUNT + 1))
+          else
+            echo "✓ AndroidManifest.xml exists"
+            if ! grep -q "flutterEmbedding.*2" android/app/src/main/AndroidManifest.xml; then
+              echo "❌ ERROR: Flutter v2 embedding not configured"
+              ERROR_COUNT=$((ERROR_COUNT + 1))
+            else
+              echo "✓ Flutter v2 embedding configured"
+            fi
+          fi
+          
+          # 6. Check pubspec.yaml and dependencies
+          echo ""
+          echo "6. Checking dependencies..."
+          if [ ! -f "pubspec.yaml" ]; then
+            echo "❌ ERROR: pubspec.yaml not found"
+            ERROR_COUNT=$((ERROR_COUNT + 1))
+          else
+            echo "✓ pubspec.yaml exists"
+            
+            # Check if packages are resolvable
+            if ! flutter pub get > /dev/null 2>&1; then
+              echo "❌ ERROR: flutter pub get failed"
+              ERROR_COUNT=$((ERROR_COUNT + 1))
+            else
+              echo "✓ Dependencies resolved"
+            fi
+          fi
+          
+          # 7. Check assets referenced in pubspec.yaml
+          echo ""
+          echo "7. Checking assets..."
+          if grep -q "^  assets:" pubspec.yaml; then
+            echo "Assets defined in pubspec.yaml:"
+            ASSET_PATHS=$(grep -A 20 "^  assets:" pubspec.yaml | grep "^-" | sed 's/^[[:space:]]*-[[:space:]]*//' | sed 's/\/$//')
+            for ASSET_PATH in $ASSET_PATHS; do
+              if [ -d "$ASSET_PATH" ] || [ -f "$ASSET_PATH" ]; then
+                echo "  ✓ $ASSET_PATH exists"
+              else
+                echo "  ⚠ WARNING: $ASSET_PATH not found"
+                WARNING_COUNT=$((WARNING_COUNT + 1))
+              fi
+            done
+            
+            # Check for TFLite models if tflite_flutter is used
+            if grep -q "tflite_flutter" pubspec.yaml; then
+              echo ""
+              echo "  Checking TFLite models..."
+              if [ -d "assets/models" ]; then
+                MODEL_COUNT=$(find assets/models -name "*.tflite" 2>/dev/null | wc -l)
+                if [ "$MODEL_COUNT" -eq 0 ]; then
+                  echo "  ⚠ WARNING: tflite_flutter is used but no .tflite files found in assets/models/"
+                  WARNING_COUNT=$((WARNING_COUNT + 1))
+                else
+                  echo "  ✓ Found $MODEL_COUNT TFLite model(s)"
+                fi
+              else
+                echo "  ⚠ WARNING: assets/models directory not found (may be needed for tflite_flutter)"
+                WARNING_COUNT=$((WARNING_COUNT + 1))
+              fi
+            fi
+          else
+            echo "No assets defined in pubspec.yaml"
+          fi
+          
+          # 8. Check Java/Kotlin compatibility
+          echo ""
+          echo "8. Checking Java/Kotlin compatibility..."
+          if command -v java > /dev/null 2>&1; then
+            JAVA_VERSION=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
+            echo "  Java version: $JAVA_VERSION"
+            if [ "$JAVA_VERSION" -lt 17 ]; then
+              echo "  ⚠ WARNING: Java 17+ required for Android Gradle Plugin 8.3.0"
+              WARNING_COUNT=$((WARNING_COUNT + 1))
+            else
+              echo "  ✓ Java version compatible"
+            fi
+          else
+            echo "  ❌ ERROR: Java not found"
+            ERROR_COUNT=$((ERROR_COUNT + 1))
+          fi
+          
+          # 9. Check disk space
+          echo ""
+          echo "9. Checking disk space..."
+          AVAILABLE_SPACE=$(df -BG . | tail -1 | awk '{print $4}' | sed 's/G//')
+          if [ "$AVAILABLE_SPACE" -lt 10 ]; then
+            echo "  ⚠ WARNING: Low disk space: ${AVAILABLE_SPACE}GB available (need at least 10GB)"
+            WARNING_COUNT=$((WARNING_COUNT + 1))
+          else
+            echo "  ✓ Disk space OK: ${AVAILABLE_SPACE}GB available"
+          fi
+          
+          # 10. Check memory
+          echo ""
+          echo "10. Checking memory..."
+          TOTAL_MEM=$(free -g | grep Mem | awk '{print $2}')
+          if [ "$TOTAL_MEM" -lt 4 ]; then
+            echo "  ⚠ WARNING: Low memory: ${TOTAL_MEM}GB total (recommended: 8GB+)"
+            WARNING_COUNT=$((WARNING_COUNT + 1))
+          else
+            echo "  ✓ Memory OK: ${TOTAL_MEM}GB total"
+          fi
+          
+          # Summary
+          echo ""
+          echo "=========================================="
+          echo "Validation Summary"
+          echo "=========================================="
+          echo "Errors: $ERROR_COUNT"
+          echo "Warnings: $WARNING_COUNT"
+          
+          if [ $ERROR_COUNT -gt 0 ]; then
+            echo ""
+            echo "❌ Build will likely fail due to $ERROR_COUNT error(s)!"
+            echo "Please fix the errors above before building."
+            exit 1
+          elif [ $WARNING_COUNT -gt 0 ]; then
+            echo ""
+            echo "⚠ Build may succeed but has $WARNING_COUNT warning(s)."
+            echo "Consider addressing warnings for a more reliable build."
+          else
+            echo ""
+            echo "✓ All checks passed! Ready to build."
+          fi
+          echo "=========================================="
+      
       - name: Build APK
         id: build-apk
         timeout-minutes: 30
